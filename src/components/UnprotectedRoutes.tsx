@@ -1,4 +1,3 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 import AuthImage from "../assets/images/image-1.jpeg";
 const UnprotectedRoutes = () => {
