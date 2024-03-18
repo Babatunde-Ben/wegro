@@ -15,15 +15,14 @@ const Login = () => {
     console.log(inputFields);
   };
   return (
-    <div className="md:max-w-[400px]">
-      <p className="text-slate-800 font-semibold text-3xl mb-4">
-        Welcome Back,
-      </p>
-      <p className="text-lg">
-        Please sign in to access your account and enjoy the music
+    <div className="sm:max-w-[450px] sm:mx-auto md:mx-0">
+      <h1 className="mb-8 text-2xl md:text-4xl font-semibold">Logo</h1>
+      <p className="text-primary-500 font-bold text-2xl mb-4">Welcome Back,</p>
+      <p className="font-medium text-primary-400 mb-10">
+        Please log in to access your account and enjoy the music
       </p>
 
-      <div className="mt-8">
+      <div className="">
         <div className="mb-5">
           <Input
             type="email"
@@ -32,10 +31,9 @@ const Login = () => {
             handleInputChange={handleInputChange}
             value={inputFields.email}
             placeholder="Enter email address"
-            className="!min-w-[370px]"
           />
         </div>
-        <div className="">
+        <div className="mb-5">
           <Input
             type="password"
             label="Password"
@@ -43,14 +41,9 @@ const Login = () => {
             handleInputChange={handleInputChange}
             value={inputFields.password}
             placeholder="Enter your password"
-            className="!min-w-[370px]"
           />
         </div>
-        <div className="w-full flex justify-end mt-2 mb-10">
-          <Link to={"/forgot-password"} className="text-right text-sm">
-            Forgot Password ?
-          </Link>
-        </div>
+
         <div className="w-full h-14">
           <Button variant="primary">Login</Button>
         </div>
@@ -59,13 +52,13 @@ const Login = () => {
           OR
           <div className="flex-1 bg-slate-300 h-[1px]"></div>
         </div>
-        <button className="text-sm w-full flex items-center justify-center gap-2 border border-slate-800 text-slate-800 py-3 px-10 rounded-3xl outline-none">
-          {/* <Google /> */}
-          Continue with Google
-        </button>
-        <div className="mt-5">
+        <div className="w-full h-14">
+          <Button variant="secondary"> Continue with Google</Button>
+        </div>
+
+        <div className="my-5">
           <p className="text-center text-slate-700 text-sm">
-            Dont have an account ?{" "}
+            Dont have an account?{" "}
             <Link to={"/register"} className="font-semibold">
               Create New Account
             </Link>

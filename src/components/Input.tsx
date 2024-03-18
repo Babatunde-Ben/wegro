@@ -9,7 +9,7 @@ interface InputProps {
   handleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const index = ({
+const Input = ({
   type,
   id,
   className,
@@ -30,11 +30,11 @@ const index = ({
         name={name}
         value={value}
         onChange={handleInputChange}
-        className={`focus-within:border-slate-600 w-full text-sm p-3.5 py-3 rounded-md outline-none border ${className}`}
+        className={`focus:border-slate-600 w-full text-sm p-3.5 py-3 rounded-md outline-none border border-slate-300 ${className}`}
         placeholder={placeholder}
       />
     </div>
   );
 };
 
-export default index;
+export default Input;
