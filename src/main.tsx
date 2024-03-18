@@ -8,6 +8,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Error from "./pages/Error";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import UnprotectedRoutes from "./components/UnprotectedRoutes";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -15,8 +16,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       {/* <App /> */}
       <Routes>
         <Route path="/" element={<Navigate to={"login"} />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route element={<UnprotectedRoutes />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+        </Route>
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
