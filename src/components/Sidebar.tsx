@@ -1,10 +1,12 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import HomeIcon from "../assets/SVGs/home.svg?react";
 import Logo from "../assets/SVGs/logo.svg?react";
 import LogOutIcon from "../assets/SVGs/log-out.svg?react";
 import TrendingIcon from "../assets/SVGs/hash-tag.svg?react";
 import RecommendedIcon from "../assets/SVGs/recommended.svg?react";
+import { signOut } from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -19,20 +21,18 @@ const Sidebar = () => {
     navigate(navMenu.path);
     setIsSidebarOpen(false);
   };
-
-  //useEffect to close sidebar
-  const closeSidebar = useCallback(
-    (e: any) => {
-      if (sidebarRef.current && !sidebarRef.current.contains(e.target)) {
-        setIsSidebarOpen(false);
-      }
-    },
-    [isSidebarOpen]
-  );
-
-  useEffect(() => {
-    document.addEventListener("mousedown", closeSidebar);
-  }, [closeSidebar]);
+  const handleLogOut = () => {
+    signOut(auth)
+      .then(() => {
+        // remove user data from local storage
+        localStorage.removeItem("user_data");
+        // redirect user to login page
+        navigate("/login");
+      })
+      .catch(() => {
+        // An error happened.
+      });
+  };
 
   const navLinks: Navlinks = [
     {
@@ -91,10 +91,7 @@ const Sidebar = () => {
       </ul>
 
       <button
-        onClick={() => {
-          localStorage.removeItem("access_token");
-          navigate("/login");
-        }}
+        onClick={handleLogOut}
         className={`w-full h-14 outline-none border-none inline-flex justify-center items-center gap-4 px-5 py-[14px] mb-3 cursor-pointer text-red-500 font-medium  capitalize whitespace-nowrap select-none  `}
       >
         <span>
