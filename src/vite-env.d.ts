@@ -14,3 +14,7 @@ type Navlinks = {
   name: string;
   svg?: React.ReactNode;
 }[];
+type UserData = {
+  display_name: string | null;
+  profile_photo: string | null;
+};

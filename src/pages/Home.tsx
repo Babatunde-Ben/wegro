@@ -1,6 +1,6 @@
 import MusicCard from "../components/MusicCard";
 import MusicList from "../components/MusicList";
-import BannerImage from "../assets/images/image-1.jpeg";
+import BannerImage from "../assets/images/banner-image.jpg";
 
 import TrendingIcon from "../assets/SVGs/hash-tag.svg?react";
 import RecommendedIcon from "../assets/SVGs/recommended.svg?react";

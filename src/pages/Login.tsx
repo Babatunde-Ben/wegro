@@ -59,7 +59,7 @@ const Login = () => {
         setIsAuthenticatingGoogle(false);
 
         console.log("google auth error", error);
-        setErrorMessage("Something Went Wrong");
+        setErrorMessage("Error authenticatng user");
       });
   };
 
@@ -177,7 +177,7 @@ const Login = () => {
 
         <div className="my-5">
           <p className="text-center text-slate-700 text-sm">
-            Dont have an account?{" "}
+            Don't have an account?{" "}
             <Link to={"/register"} className="font-semibold">
               Create New Account
             </Link>

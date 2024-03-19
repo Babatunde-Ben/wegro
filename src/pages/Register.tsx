@@ -59,7 +59,7 @@ const Register = () => {
         setIsAuthenticatingGoogle(false);
 
         console.log("google auth error", error);
-        setErrorMessage("Something Went Wrong");
+        setErrorMessage("Error authenticatng user");
       });
   };
 
