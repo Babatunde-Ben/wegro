@@ -8,12 +8,27 @@ const Home = () => {
   const navigate = useNavigate();
   return (
     <section className=" px-5 md:px-10">
-      <div className="overflow-hidden rounded-2xl w-full mb-10">
+      <div className="overflow-hidden relative rounded-2xl w-full mb-10">
         <img
           src={BannerImage}
           alt=""
           className="object-cover w-full h-44 sm:h-56 md:h-64"
         />
+        <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-b from-transparent via-black/50 to-black/90 flex flex-col justify-end p-8">
+          <div>
+            <p className="flex items-center gap-2 text-white mb-3 text-sm uppercase font-medium">
+              {" "}
+              <span className="w-2 h-2 inline-block rounded-full  bg-red-600"></span>
+              <span>Exclusive</span>
+            </p>
+            <p className="text-3xl font-bold mb-3 text-white uppercase">
+              Experience 2024
+            </p>
+            <p className="w-3/5 text-slate-100 ">
+              Listen to live music concert directly through our free streaming
+            </p>
+          </div>
+        </div>
       </div>
       <div className="mb-10">
         <div className="flex justify-between items-center mb-5">
@@ -27,7 +42,7 @@ const Home = () => {
           </p>
           <p
             onClick={() => navigate("/trending")}
-            className="flex items-center gap-2 cursor-pointer text-blue-500 text-sm "
+            className="flex items-center gap-2 cursor-pointer text-blue-500 text-sm hover:text-blue-400"
           >
             <span className=" font-semibold capitalize">show more</span>{" "}
             <span>
@@ -54,7 +69,7 @@ const Home = () => {
           </p>
           <p
             onClick={() => navigate("/recommended")}
-            className="flex items-center gap-2 cursor-pointer text-blue-500 text-sm "
+            className="flex items-center gap-2 cursor-pointer text-blue-500 text-sm hover:text-blue-400"
           >
             <span className=" font-semibold capitalize">show more</span>{" "}
             <span>
