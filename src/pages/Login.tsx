@@ -3,7 +3,9 @@ import Input from "../components/Input";
 
 import { useState } from "react";
 import Button from "../components/Button";
-// import { ReactComponent as Google } from "../assets/SVGs/google.svg";
+import Google from "../assets/SVGs/google.svg?react";
+import Logo from "../assets/SVGs/logo.svg?react";
+
 const Login = () => {
   const [inputFields, setInputFields] = useState({
     email: "",
@@ -16,8 +18,8 @@ const Login = () => {
   };
   return (
     <div className="sm:max-w-[450px] sm:mx-auto md:mx-0">
-      <h1 className="mb-8 text-2xl md:text-4xl font-semibold">Logo</h1>
-      <p className="text-primary-500 font-bold text-2xl mb-4">Welcome Back,</p>
+      <Logo className="mb-5" />
+      <p className="text-primary-500 font-bold text-xl mb-4">Welcome Back,</p>
       <p className="font-medium text-primary-400 mb-10">
         Please log in to access your account and enjoy the music
       </p>
@@ -53,7 +55,10 @@ const Login = () => {
           <div className="flex-1 bg-slate-300 h-[1px]"></div>
         </div>
         <div className="w-full h-14">
-          <Button variant="secondary"> Continue with Google</Button>
+          <Button variant="secondary">
+            <Google />
+            <span>Continue with Google</span>
+          </Button>
         </div>
 
         <div className="my-5">

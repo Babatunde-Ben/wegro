@@ -30,7 +30,7 @@ const Input = ({
         name={name}
         value={value}
         onChange={handleInputChange}
-        className={` w-full text-sm p-3.5 py-3 rounded-md outline-none border border-primary-100 bg-white bg-transparent focus:border-slate-600`}
+        className={` w-full text-sm p-3.5 py-3 rounded-md outline-none border border-primary-100 bg-white bg-transparent  focus:border-slate-600`}
         placeholder={placeholder}
       />
     </div>

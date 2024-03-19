@@ -11,7 +11,7 @@ const Button = ({ variant, onClick, children, disabled }: ButtonProps) => {
     <button
       onClick={onClick}
       disabled={disabled}
-      className={`w-full h-full rounded-full outline-none inline-flex justify-center items-center font-medium transition duration-150  disabled:bg-primary-100 disabled:text-primary-300 ${
+      className={`w-full h-full rounded-full outline-none inline-flex gap-3 justify-center items-center font-medium transition duration-150  disabled:bg-primary-100 disabled:text-primary-300 ${
         variant === "primary"
           ? "bg-primary-500 text-white border-none  hover:bg-primary-400"
           : "text-primary-500 border-2 border-primary-500  hover:bg-primary-100 hover:border-primary-400 "

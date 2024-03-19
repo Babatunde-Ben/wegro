@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-
 import { useNavigate } from "react-router-dom";
+import HomeIcon from "../assets/SVGs/home.svg?react";
+import Logo from "../assets/SVGs/logo.svg?react";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -33,50 +34,50 @@ const Sidebar = () => {
     {
       id: 1,
       path: "",
-      name: "Recommended",
-      //   svg: <AvailableSstormIcon />,
+      name: "Home",
+      svg: <HomeIcon className="w-5" />,
     },
     {
       id: 2,
       path: "/trending",
       name: "Trending",
-      //   svg: <HailedStromIcon />,
+      svg: <HomeIcon className="w-5" />,
     },
     {
       id: 3,
-      path: "/created-sstorm",
-      name: "created sstorm",
-      //   svg: <CreatedStormIcon />,
+      path: "/recommended",
+      name: "Recommended",
+      svg: <HomeIcon className="w-5" />,
     },
   ];
 
   return (
     <div
       ref={sidebarRef}
-      className={`min-w-[220px] w-[220px] fixed z-50 top-0 left-0 h-screen overflow-y-auto flex flex-col items-center gap-12 py-8 transition duration-200 md:translate-x-0 ${
+      className={`min-w-[250px] w-[250px] fixed z-50 top-0 left-0 h-screen overflow-y-auto flex flex-col items-center gap-20 py-12 transition duration-200 md:translate-x-0 ${
         !isSidebarOpen && "-translate-x-full"
       }`}
     >
       <span className="">
-        <h1>Logo</h1>
+        <Logo className="w-40" />
       </span>
-      <ul className="bg-green-500k flex-1 w-full">
+      <ul className=" flex-1 w-full">
         {navLinks.map((item) => (
-          <li key={item.id} className="">
+          <li key={item.id} className="mb-2">
             <label
               onClick={() => handleNavigate(item)}
-              className={`w-full h-14 rounded-sm flex justify-start items-center gap-4  py-[14px] mb-5 cursor-pointer relative transition duration-150 ${
+              className={`w-full h-14 rounded-sm flex justify-start items-center pl-8 gap-2  py-[14px] mb-5 cursor-pointer relative transition duration-150  ${
                 pathname.startsWith(item.path)
-                  ? "bg-color2-600 text-color1-600  before:absolute before:w-2 before:h-full before:bg-blue-300 before:left-0 before:rounded-r-md"
-                  : "text-color2-50 hover:bg-color2-600 hover:bg-red-50"
+                  ? " text-blue-500 before:absolute before:w-2 before:h-full before:bg-blue-500 before:left-0 before:rounded-r-md"
+                  : "text-primary-500 hover:text-primary-400 "
               }`}
             >
               <span
-                className={`min-w-[32px] min-h-[32px] rounded-md  flex justify-center items-center `}
+                className={`min-w-[32px] min-h-[32px] rounded-md  flex justify-center items-center  `}
               >
                 {item.svg}
               </span>
-              <p className="capitalize whitespace-nowrap select-none font-semibold text-primary-500 ">
+              <p className="capitalize whitespace-nowrap select-none  font-semibold  ">
                 {item.name}
               </p>
             </label>
