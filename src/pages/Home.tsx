@@ -12,19 +12,19 @@ const Home = () => {
         <img
           src={BannerImage}
           alt=""
-          className="object-cover w-full h-44 sm:h-56 md:h-64"
+          className="object-cover w-full h-48 sm:h-56 md:h-64"
         />
         <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-b from-transparent via-black/50 to-black/90 flex flex-col justify-end p-8">
           <div>
-            <p className="flex items-center gap-2 text-white mb-3 text-sm uppercase font-medium">
+            <p className="flex items-center gap-2 text-slate-100 mb-2 text-xs uppercase font-medium md:text-sm">
               {" "}
-              <span className="w-2 h-2 inline-block rounded-full  bg-red-600"></span>
+              <span className="w-2 h-2 inline-block rounded-full   bg-red-600"></span>
               <span>Exclusive</span>
             </p>
-            <p className="text-3xl font-bold mb-3 text-white uppercase">
-              Experience 2024
+            <p className="text-lg font-bold  text-white uppercase md:mb-2 md:text-2xl ">
+              Jezzy Concert 2024
             </p>
-            <p className="w-3/5 text-slate-100 ">
+            <p className=" text-slate-100 text-sm lg:w-3/5 ">
               Listen to live music concert directly through our free streaming
             </p>
           </div>
@@ -64,7 +64,7 @@ const Home = () => {
               <TrendingIcon />
             </span>
             <span className="text-xl font-semibold text-primary-500">
-              Recommended For You
+              Recommended
             </span>
           </p>
           <p

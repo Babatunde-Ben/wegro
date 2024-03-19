@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import HomeIcon from "../assets/SVGs/home.svg?react";
 import Logo from "../assets/SVGs/logo.svg?react";
+import LogOutIcon from "../assets/SVGs/log-out.svg?react";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -55,7 +56,7 @@ const Sidebar = () => {
   return (
     <div
       ref={sidebarRef}
-      className={`min-w-[250px] w-[250px] bg-white fixed z-50 top-0 left-0 h-screen overflow-y-auto flex flex-col items-center gap-20 py-12 transition duration-200 md:translate-x-0 ${
+      className={`min-w-[250px] w-[250px] bg-white fixed z-50 top-0 left-0 h-screen overflow-y-auto flex flex-col items-center gap-20 py-10 transition duration-200 md:translate-x-0 ${
         !isSidebarOpen && "-translate-x-full"
       }`}
     >
@@ -85,19 +86,20 @@ const Sidebar = () => {
             </label>
           </li>
         ))}
-
-        <li className="mt-14" onClick={() => navigate("/login")}>
-          <button
-            onClick={() => {
-              localStorage.removeItem("access_token");
-            }}
-            className={`w-full h-14 rounded-full inline-flex justify-start items-center gap-4 px-4 py-[14px] mb-3 cursor-pointer bg-color2-600 text-color2-200 capitalize whitespace-nowrap select-none outline-none hover:border-2 hover:border-color1-800 `}
-          >
-            <span>{/* <LogOutIcon /> */}</span>
-            Logout
-          </button>
-        </li>
       </ul>
+
+      <button
+        onClick={() => {
+          localStorage.removeItem("access_token");
+          navigate("/login");
+        }}
+        className={`w-full h-14  inline-flex justify-center items-center gap-4 px-5 py-[14px] mb-3 cursor-pointer text-red-500 font-medium  capitalize whitespace-nowrap select-none outline-none hover:border-2  `}
+      >
+        <span>
+          <LogOutIcon />
+        </span>
+        Log Out
+      </button>
     </div>
   );
 };
