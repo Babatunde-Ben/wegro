@@ -17,7 +17,7 @@ const Home = () => {
           alt=""
           className="object-cover w-full h-48 sm:h-56 md:h-64"
         />
-        <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-b from-transparent via-black/50 to-black/90 flex flex-col justify-end p-8">
+        <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-b from-transparent via-black/50 to-black/90 flex flex-col justify-end p-5 md:p-8">
           <div>
             <p className="flex items-center gap-2 text-slate-100 mb-2 text-xs uppercase font-medium md:text-sm">
               {" "}
