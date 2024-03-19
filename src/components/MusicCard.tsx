@@ -1,9 +1,10 @@
 import CardImage from "../assets/images/image-1.jpeg";
-type MusicCardProps = {
-  image?: string;
-};
+// type MusicCardProps = {
+//   image?: string;
+// };
 
-const MusicCard = ({ image }: MusicCardProps) => {
+// const MusicCard = ({ image }: MusicCardProps) => {
+const MusicCard = () => {
   return (
     <div>
       <div className="overflow-hidden rounded-xl mb-3 shadow-md">

@@ -5,12 +5,12 @@ import PlayIcon from "../assets/SVGs/play.svg?react";
 import PauseIcon from "../assets/SVGs/pause.svg?react";
 
 type MusicListProps = {
-  image?: string;
+  //   image?: string;
   isActive: boolean;
   isPlaying?: boolean;
 };
 
-const MusicList = ({ image, isActive, isPlaying }: MusicListProps) => {
+const MusicList = ({ isActive, isPlaying }: MusicListProps) => {
   const [isLiked, setIsLiked] = useState(false);
   return (
     <div
