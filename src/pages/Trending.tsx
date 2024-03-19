@@ -19,6 +19,10 @@ const Trending = () => {
         <MusicList isActive={false} />
         <MusicList isActive={true} />
         <MusicList isActive={false} />
+        <MusicList isActive={false} />
+        <MusicList isActive={false} />
+        <MusicList isActive={false} />
+        <MusicList isActive={false} />
       </div>
     </section>
   );

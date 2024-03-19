@@ -1,6 +1,14 @@
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import AuthImage from "../assets/images/image-1.jpeg";
+import { useState } from "react";
 const UnprotectedRoutes = () => {
+  const [userData] = useState<string | null>(
+    JSON.parse(localStorage.getItem("user_data"))
+  );
+  //   check if user is logged in, to redirect to home page
+  if (userData) {
+    return <Navigate to={"/home"} />;
+  }
   return (
     <main className="relative h-screen">
       <section className="hidden  fixed left-0 top-0 w-96 h-full md:block lg:w-[500px]">

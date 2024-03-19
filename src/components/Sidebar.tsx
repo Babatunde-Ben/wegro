@@ -95,7 +95,7 @@ const Sidebar = () => {
           localStorage.removeItem("access_token");
           navigate("/login");
         }}
-        className={`w-full h-14  inline-flex justify-center items-center gap-4 px-5 py-[14px] mb-3 cursor-pointer text-red-500 font-medium  capitalize whitespace-nowrap select-none outline-none hover:border-2  `}
+        className={`w-full h-14 outline-none border-none inline-flex justify-center items-center gap-4 px-5 py-[14px] mb-3 cursor-pointer text-red-500 font-medium  capitalize whitespace-nowrap select-none  `}
       >
         <span>
           <LogOutIcon />

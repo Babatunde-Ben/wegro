@@ -6,14 +6,17 @@ import ProfileImage from "../assets/images/image-1.jpeg";
 import PlayIcon from "../assets/SVGs/play.svg?react";
 
 const ProtectedRoutes = () => {
-  const [isLoggedIn] = useState(true);
+  const [userData] = useState<string | null>(
+    JSON.parse(localStorage.getItem("user_data"))
+  );
   const [searchInput, setSearchInput] = useState("");
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setSearchInput(value);
   };
 
-  if (!isLoggedIn) {
+  //   check if user is logged i, if not redirect to login page
+  if (!userData) {
     return <Navigate to={"/login"} />;
   }
   return (
@@ -44,7 +47,7 @@ const ProtectedRoutes = () => {
       </section>
 
       <section className="hidden w-80 h-screen fixed right-0 top-0 bg-white  lg:block">
-        <div className="shadow-md flex gap-5 p-5 pt-8 ">
+        <div className="shadow-sm shadow-primary-100 flex gap-5 p-5 pt-8 ">
           <div className="overflow-hidden shadow-md w-12 h-12 min-w-[48px] rounded-full  ">
             <img
               src={ProfileImage}

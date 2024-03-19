@@ -13,24 +13,31 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import Home from "./pages/Home";
 import Trending from "./pages/Trending";
 import Recommended from "./pages/Recommended";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
+// Create a client
+const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* <App /> */}
-      <Routes>
-        <Route path="/" element={<Navigate to={"/home"} />} />
-        <Route element={<UnprotectedRoutes />}>
-          <Route path="/login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-        </Route>
-        <Route element={<ProtectedRoutes />}>
-          <Route path="/home" element={<Home />} />
-          <Route path="/trending" element={<Trending />} />
-          <Route path="/recommended" element={<Recommended />} />
-        </Route>
-        <Route path="*" element={<Error />} />
-      </Routes>
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={false} />
+        <Routes>
+          <Route path="/" element={<Navigate to={"/home"} />} />
+          <Route element={<UnprotectedRoutes />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+          </Route>
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/trending" element={<Trending />} />
+            <Route path="/recommended" element={<Recommended />} />
+          </Route>
+          <Route path="*" element={<Error />} />
+        </Routes>
+      </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
