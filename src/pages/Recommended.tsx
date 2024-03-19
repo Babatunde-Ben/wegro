@@ -1,5 +1,5 @@
 import MusicList from "../components/MusicList";
-import TrendingIcon from "../assets/SVGs/search.svg?react";
+import RecommendedIcon from "../assets/SVGs/recommended.svg?react";
 
 const Recommended = () => {
   return (
@@ -7,7 +7,7 @@ const Recommended = () => {
       <div className="flex justify-between items-center mb-5">
         <p className="flex items-center gap-2">
           <span className="text-blue-500">
-            <TrendingIcon />
+            <RecommendedIcon />
           </span>
           <span className="text-xl font-semibold text-primary-500">
             Recommended For You

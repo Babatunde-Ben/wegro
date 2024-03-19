@@ -3,6 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import SearchIcon from "../assets/SVGs/search.svg?react";
 import ProfileImage from "../assets/images/image-1.jpeg";
+import PlayIcon from "../assets/SVGs/play.svg?react";
 
 const ProtectedRoutes = () => {
   const [isLoggedIn] = useState(true);
@@ -80,7 +81,7 @@ const ProtectedRoutes = () => {
               <SearchIcon />
             </button>
             <button className="border-none outline-none w-12 h-12 min-w-[48px] cursor-pointer rounded-full flex items-center justify-center bg-blue-500 text-white transitio duration-100 hover:bg-blue-600">
-              <SearchIcon />
+              <PlayIcon />
             </button>
             <button className="cursor-pointer border-none outline-none">
               <SearchIcon />

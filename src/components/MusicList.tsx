@@ -1,13 +1,16 @@
 import { useState } from "react";
 import CardImage from "../assets/images/image-1.jpeg";
 import FavouriteIcon from "../assets/SVGs/favourite.svg?react";
+import PlayIcon from "../assets/SVGs/play.svg?react";
+import PauseIcon from "../assets/SVGs/pause.svg?react";
 
 type MusicListProps = {
   image?: string;
   isActive: boolean;
+  isPlaying?: boolean;
 };
 
-const MusicList = ({ image, isActive }: MusicListProps) => {
+const MusicList = ({ image, isActive, isPlaying }: MusicListProps) => {
   const [isLiked, setIsLiked] = useState(false);
   return (
     <div
@@ -15,8 +18,8 @@ const MusicList = ({ image, isActive }: MusicListProps) => {
         isActive ? "bg-white" : "hover:bg-white/30"
       }`}
     >
-      <span className="cursor-pointer">
-        <FavouriteIcon />
+      <span className="cursor-pointer text-blue-500">
+        {isPlaying ? <PauseIcon /> : <PlayIcon />}
       </span>
       <div className="flex-1 flex gap-3 items-center">
         <div className="overflow-hidden w-12 h-12 min-w-[48px] rounded-lg  ">

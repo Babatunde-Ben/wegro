@@ -1,5 +1,5 @@
 import MusicList from "../components/MusicList";
-import TrendingIcon from "../assets/SVGs/search.svg?react";
+import TrendingIcon from "../assets/SVGs/hash-tag.svg?react";
 
 const Trending = () => {
   return (

@@ -3,6 +3,8 @@ import { useLocation, useNavigate } from "react-router-dom";
 import HomeIcon from "../assets/SVGs/home.svg?react";
 import Logo from "../assets/SVGs/logo.svg?react";
 import LogOutIcon from "../assets/SVGs/log-out.svg?react";
+import TrendingIcon from "../assets/SVGs/hash-tag.svg?react";
+import RecommendedIcon from "../assets/SVGs/recommended.svg?react";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -43,13 +45,13 @@ const Sidebar = () => {
       id: 2,
       path: "/trending",
       name: "Trending",
-      svg: <HomeIcon className="w-5" />,
+      svg: <TrendingIcon className="w-5" />,
     },
     {
       id: 3,
       path: "/recommended",
       name: "Recommended",
-      svg: <HomeIcon className="w-5" />,
+      svg: <RecommendedIcon className="w-5" />,
     },
   ];
 

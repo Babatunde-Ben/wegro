@@ -1,7 +1,10 @@
 import MusicCard from "../components/MusicCard";
 import MusicList from "../components/MusicList";
 import BannerImage from "../assets/images/image-1.jpeg";
-import TrendingIcon from "../assets/SVGs/search.svg?react";
+
+import TrendingIcon from "../assets/SVGs/hash-tag.svg?react";
+import RecommendedIcon from "../assets/SVGs/recommended.svg?react";
+import ArrowIcon from "../assets/SVGs/arrow-right.svg?react";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
@@ -46,7 +49,7 @@ const Home = () => {
           >
             <span className=" font-semibold capitalize">show more</span>{" "}
             <span>
-              <TrendingIcon className="w-4" />
+              <ArrowIcon className="w-4" />
             </span>
           </p>
         </div>
@@ -61,7 +64,7 @@ const Home = () => {
         <div className="flex justify-between items-center mb-5">
           <p className="flex items-center gap-2">
             <span className="text-blue-500">
-              <TrendingIcon />
+              <RecommendedIcon />
             </span>
             <span className="text-xl font-semibold text-primary-500">
               Recommended
@@ -73,7 +76,7 @@ const Home = () => {
           >
             <span className=" font-semibold capitalize">show more</span>{" "}
             <span>
-              <TrendingIcon className="w-4" />
+              <ArrowIcon className="w-4" />
             </span>
           </p>
         </div>
