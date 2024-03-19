@@ -6,9 +6,8 @@ import ProfileImage from "../assets/images/image-1.jpeg";
 import PlayIcon from "../assets/SVGs/play.svg?react";
 
 const ProtectedRoutes = () => {
-  const [userData] = useState<string | null>(
-    JSON.parse(localStorage.getItem("user_data"))
-  );
+  const userDataString = localStorage.getItem("user_data");
+
   const [searchInput, setSearchInput] = useState("");
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -16,7 +15,7 @@ const ProtectedRoutes = () => {
   };
 
   //   check if user is logged i, if not redirect to login page
-  if (!userData) {
+  if (!userDataString) {
     return <Navigate to={"/login"} />;
   }
   return (

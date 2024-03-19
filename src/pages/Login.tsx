@@ -47,7 +47,7 @@ const Login = () => {
 
         // save user data to browser local storage
         const userData = {
-          access_token: res?.user?.accessToken,
+          //   access_token: res?.user?.accessToken,
           display_name: res?.user?.displayName,
           profile_photo: res?.user?.photoURL,
         };
@@ -84,7 +84,7 @@ const Login = () => {
 
         // save user data to browser local storage
         const userData = {
-          access_token: user?.accessToken,
+          //   access_token: user?.accessToken,
           display_name: user?.displayName,
           profile_photo: user?.photoURL,
         };

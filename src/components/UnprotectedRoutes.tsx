@@ -1,12 +1,11 @@
 import { Navigate, Outlet } from "react-router-dom";
 import AuthImage from "../assets/images/image-1.jpeg";
-import { useState } from "react";
+
 const UnprotectedRoutes = () => {
-  const [userData] = useState<string | null>(
-    JSON.parse(localStorage.getItem("user_data"))
-  );
+  const userDataString = localStorage.getItem("user_data");
+
   //   check if user is logged in, to redirect to home page
-  if (userData) {
+  if (userDataString) {
     return <Navigate to={"/home"} />;
   }
   return (
