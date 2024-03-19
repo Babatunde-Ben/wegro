@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import HomeIcon from "../assets/SVGs/home.svg?react";
 import Logo from "../assets/SVGs/logo.svg?react";
 
 const Sidebar = () => {
   const navigate = useNavigate();
-  const pathname = "";
+  const location = useLocation();
+  const pathname = location.pathname;
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -61,12 +62,13 @@ const Sidebar = () => {
       <span className="">
         <Logo className="w-40" />
       </span>
+      {/* {pathname} */}
       <ul className=" flex-1 w-full">
         {navLinks.map((item) => (
           <li key={item.id} className="mb-2">
             <label
               onClick={() => handleNavigate(item)}
-              className={`w-full h-14 rounded-sm flex justify-start items-center pl-8 gap-2  py-[14px] mb-5 cursor-pointer relative transition duration-150  ${
+              className={`w-full h-14 rounded-sm flex justify-start items-center pl-8 gap-2  py-[14px] mb-5 cursor-pointer relative transition duration-150 font-medium ${
                 pathname.startsWith(item.path)
                   ? " text-blue-500 before:absolute before:w-2 before:h-full before:bg-blue-500 before:left-0 before:rounded-r-md"
                   : "text-primary-500 hover:text-primary-400 "
@@ -77,7 +79,7 @@ const Sidebar = () => {
               >
                 {item.svg}
               </span>
-              <p className="capitalize whitespace-nowrap select-none  font-semibold  ">
+              <p className="capitalize whitespace-nowrap select-none ">
                 {item.name}
               </p>
             </label>

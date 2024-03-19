@@ -17,9 +17,9 @@ const ProtectedRoutes = () => {
   return (
     <main>
       <Sidebar />
-      <section className="flex  md:ml-[250px] ">
+      <section className="flex  md:ml-[250px] md:mr-80 ">
         <div className="bg-[#f3f3f3] flex-1 py-5 md:py-10">
-          <div className="px-5 mb-5 md:px-10">
+          <div className="px-5 mb-8 md:px-10">
             <div className="bg-white h-14 rounded-full shadow-lg shadow-primary-100 flex items-center justify-center gap-2 px-5 text-primary-500 md:px-8">
               <span>
                 <SearchIcon />
@@ -38,14 +38,14 @@ const ProtectedRoutes = () => {
             <Outlet />
           </div>
         </div>
-        <div className="hidden w-52 h-full bg-green-500 lg:block">
-          {" "}
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores
-          debitis ullam rerum enim odio quisquam. Adipisci, nisi nam, ducimus
-          sed aperiam assumenda perferendis aspernatur quos magni labore
-          pariatur dignissimos natus?
-        </div>
       </section>
+      <div className="hidden w-80 h-screen fixed right-0 top-0 bg-red-300 lg:block">
+        {" "}
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Maiores
+        debitis ullam rerum enim odio quisquam. Adipisci, nisi nam, ducimus sed
+        aperiam assumenda perferendis aspernatur quos magni labore pariatur
+        dignissimos natus?
+      </div>
     </main>
   );
 };
