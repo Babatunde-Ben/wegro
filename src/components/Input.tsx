@@ -12,7 +12,7 @@ interface InputProps {
 const Input = ({
   type,
   id,
-  className,
+
   label,
   name,
   value,
@@ -30,7 +30,7 @@ const Input = ({
         name={name}
         value={value}
         onChange={handleInputChange}
-        className={`focus:border-slate-600 w-full text-sm p-3.5 py-3 rounded-md outline-none border border-slate-300 ${className}`}
+        className={` w-full text-sm p-3.5 py-3 rounded-md outline-none border border-primary-100 bg-white bg-transparent focus:border-slate-600`}
         placeholder={placeholder}
       />
     </div>

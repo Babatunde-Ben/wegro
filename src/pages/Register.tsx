@@ -70,7 +70,7 @@ const Register = () => {
           />
         </div>
 
-        <div className="w-full h-14">
+        <div className="w-full mt-10 h-14">
           <Button variant="primary">Register</Button>
         </div>
         <div className="my-5 flex items-center gap-1 text-slate-700">

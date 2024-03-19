@@ -44,7 +44,7 @@ const Login = () => {
           />
         </div>
 
-        <div className="w-full h-14">
+        <div className="w-full h-14 mt-10">
           <Button variant="primary">Login</Button>
         </div>
         <div className="my-5 flex items-center gap-1 text-slate-700">

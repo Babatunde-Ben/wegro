@@ -8,3 +8,9 @@ declare module "*.svg" {
 
   export default ReactComponent;
 }
+type Navlinks = {
+  id: number;
+  path: string;
+  name: string;
+  svg?: React.ReactNode;
+}[];

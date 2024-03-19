@@ -1,5 +1,12 @@
+import { useState } from "react";
+
 const Home = () => {
-  return <div className="px-10 py-2 bg-red-300">Welcome to the home page</div>;
+  const [searchInput, setSearchInput] = useState("");
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setSearchInput(value);
+  };
+  return <div>Home</div>;
 };
 
 export default Home;
