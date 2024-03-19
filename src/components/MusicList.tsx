@@ -33,7 +33,7 @@ const MusicList = ({ image, isActive }: MusicListProps) => {
       <span
         onClick={() => setIsLiked(!isLiked)}
         className={` cursor-pointer stroke-1 ${
-          !isLiked
+          isLiked
             ? "text-red-500 stroke-red-500"
             : "text-transparent stroke-primary-500"
         }`}

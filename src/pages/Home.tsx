@@ -52,7 +52,10 @@ const Home = () => {
               Recommended For You
             </span>
           </p>
-          <p className="flex items-center gap-2 cursor-pointer text-blue-500 text-sm ">
+          <p
+            onClick={() => navigate("/recommended")}
+            className="flex items-center gap-2 cursor-pointer text-blue-500 text-sm "
+          >
             <span className=" font-semibold capitalize">show more</span>{" "}
             <span>
               <TrendingIcon className="w-4" />
