@@ -19,7 +19,11 @@ const MusicList = ({ isActive, isPlaying }: MusicListProps) => {
       }`}
     >
       <span className="cursor-pointer text-blue-500">
-        {isPlaying ? <PauseIcon /> : <PlayIcon />}
+        {isPlaying ? (
+          <PauseIcon className="w-5" />
+        ) : (
+          <PlayIcon className="w-5" />
+        )}
       </span>
       <div className="flex-1 flex gap-3 items-center">
         <div className="overflow-hidden w-12 h-12 min-w-[48px] rounded-lg  ">

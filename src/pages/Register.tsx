@@ -189,10 +189,10 @@ const Register = () => {
             Register
           </Button>
         </div>
-        <div className="my-5 flex items-center gap-1 text-slate-700">
-          <div className="flex-1 bg-slate-300  h-[1px]"></div>
+        <div className="my-5 flex items-center gap-5 text-slate-700">
+          <div className="flex-1 bg-primary-300  h-[1px]"></div>
           OR
-          <div className="flex-1 bg-slate-300 h-[1px]"></div>
+          <div className="flex-1 bg-primary-300 h-[1px]"></div>
         </div>
         <div className="w-full h-14">
           <Button

@@ -83,7 +83,7 @@ const ProtectedRoutes = () => {
               <SearchIcon />
             </button>
             <button className="border-none outline-none w-12 h-12 min-w-[48px] cursor-pointer rounded-full flex items-center justify-center bg-blue-500 text-white transitio duration-100 hover:bg-blue-600">
-              <PlayIcon />
+              <PlayIcon className="w-5" />
             </button>
             <button className="cursor-pointer border-none outline-none">
               <SearchIcon />
