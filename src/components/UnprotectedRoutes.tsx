@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from "react-router-dom";
-import AuthImage from "../assets/images/image-1.jpeg";
+import AuthImage from "../assets/images/auth-image.jpg";
 
 const UnprotectedRoutes = () => {
   const userDataString = localStorage.getItem("user_data");

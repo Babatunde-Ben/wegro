@@ -26,7 +26,7 @@ const Login = () => {
     console.log(inputFields);
   };
 
-  // function to handle google authentication
+  // function to login user via google authentication
   const handleGoggleAuth = () => {
     setIsAuthenticatingGoogle(true);
     signInWithPopup(auth, googleProvider)
@@ -63,6 +63,7 @@ const Login = () => {
       });
   };
 
+  //   function to login user via via email and password
   const handleUserLogin = () => {
     setIsAuthenticatingPassword(true);
     signInWithEmailAndPassword(auth, inputFields.email, inputFields.password)
