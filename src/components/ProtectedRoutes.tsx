@@ -4,6 +4,9 @@ import Sidebar from "./Sidebar";
 import SearchIcon from "../assets/SVGs/search.svg?react";
 import ProfileImage from "../assets/images/image-1.jpeg";
 import PlayIcon from "../assets/SVGs/play.svg?react";
+import PlayBackIcon from "../assets/SVGs/play-back.svg?react";
+import PlayNextIcon from "../assets/SVGs/play-next.svg?react";
+import MusicIcon from "../assets/SVGs/music.svg?react";
 
 const ProtectedRoutes = () => {
   const userDataString = localStorage.getItem("user_data");
@@ -65,6 +68,12 @@ const ProtectedRoutes = () => {
           </div>
         </div>
         <div className="px-5 py-10">
+          <p className="flex justify-center items-center gap-3 mb-4">
+            <span className="text-blue-500">
+              <MusicIcon className="w-5" />
+            </span>
+            <span className="text-primary-500 font-semibold">Now Playing</span>
+          </p>
           <div className="overflow-hidden shadow-md w-full h-64 mb-4  rounded-2xl  ">
             <img
               src={ProfileImage}
@@ -79,14 +88,14 @@ const ProtectedRoutes = () => {
             Justin Christopher
           </p>
           <div className="flex items-center justify-center gap-10 mt-4">
-            <button className="cursor-pointer border-none outline-none">
-              <SearchIcon />
+            <button className="cursor-pointer border-none outline-none text-primary-500">
+              <PlayBackIcon className="w-5" />
             </button>
             <button className="border-none outline-none w-12 h-12 min-w-[48px] cursor-pointer rounded-full flex items-center justify-center bg-blue-500 text-white transitio duration-100 hover:bg-blue-600">
               <PlayIcon className="w-5" />
             </button>
-            <button className="cursor-pointer border-none outline-none">
-              <SearchIcon />
+            <button className="cursor-pointer border-none outline-none text-primary-500">
+              <PlayNextIcon className="w-5" />
             </button>
           </div>
         </div>

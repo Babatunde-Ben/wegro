@@ -37,7 +37,7 @@ const Home = () => {
         <div className="flex justify-between items-center mb-5">
           <p className="flex items-center gap-2">
             <span className="text-blue-500">
-              <TrendingIcon />
+              <TrendingIcon className="w-6" />
             </span>
             <span className="text-xl font-semibold text-primary-500">
               Trending
@@ -64,7 +64,7 @@ const Home = () => {
         <div className="flex justify-between items-center mb-5">
           <p className="flex items-center gap-2">
             <span className="text-blue-500">
-              <RecommendedIcon />
+              <RecommendedIcon className="w-6" />
             </span>
             <span className="text-xl font-semibold text-primary-500">
               Recommended
