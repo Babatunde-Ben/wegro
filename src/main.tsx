@@ -11,6 +11,8 @@ import Register from "./pages/Register";
 import UnprotectedRoutes from "./components/UnprotectedRoutes";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import Home from "./pages/Home";
+import Trending from "./pages/Trending";
+import Recommended from "./pages/Recommended";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -24,6 +26,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         </Route>
         <Route element={<ProtectedRoutes />}>
           <Route path="/home" element={<Home />} />
+          <Route path="/trending" element={<Trending />} />
+          <Route path="/recommended" element={<Recommended />} />
         </Route>
         <Route path="*" element={<Error />} />
       </Routes>

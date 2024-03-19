@@ -34,7 +34,7 @@ const Sidebar = () => {
   const navLinks: Navlinks = [
     {
       id: 1,
-      path: "",
+      path: "/home",
       name: "Home",
       svg: <HomeIcon className="w-5" />,
     },
@@ -55,14 +55,14 @@ const Sidebar = () => {
   return (
     <div
       ref={sidebarRef}
-      className={`min-w-[250px] w-[250px] fixed z-50 top-0 left-0 h-screen overflow-y-auto flex flex-col items-center gap-20 py-12 transition duration-200 md:translate-x-0 ${
+      className={`min-w-[250px] w-[250px] bg-white fixed z-50 top-0 left-0 h-screen overflow-y-auto flex flex-col items-center gap-20 py-12 transition duration-200 md:translate-x-0 ${
         !isSidebarOpen && "-translate-x-full"
       }`}
     >
       <span className="">
         <Logo className="w-40" />
       </span>
-      {/* {pathname} */}
+
       <ul className=" flex-1 w-full">
         {navLinks.map((item) => (
           <li key={item.id} className="mb-2">
