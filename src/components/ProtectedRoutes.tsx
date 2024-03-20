@@ -111,7 +111,7 @@ const ProtectedRoutes = () => {
         <AudioPlayer />
       </section>
       <MobileNavbar />
-      <div className="h-20 bg-red-300 shadow-sm border-b border-primary-50 w-full fixed z-20 left-0 bottom-16 md:bottom-0 md:pl-[250px] lg:hidden">
+      <div className="hidden h-20 bg-red-300 shadow-sm border-b border-primary-50 w-full fixed z-20 left-0 bottom-16 md:bottom-0 md:pl-[250px] lg:hidden">
         <AudioPlayer />
       </div>
     </main>

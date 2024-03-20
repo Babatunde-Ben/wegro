@@ -11,10 +11,12 @@ import {
   getTrackRecommendationBySeedArtist,
   getTracksByID,
 } from "../utils/backendRequest";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import MusicContext from "../contexts/MusicContext";
 
 const Home = () => {
   const navigate = useNavigate();
+  const { message } = useContext(MusicContext);
 
   const { data: trackByID } = useQuery({
     queryKey: ["tracks"],
@@ -40,6 +42,7 @@ const Home = () => {
 
   return (
     <section className=" px-5 md:px-10">
+      <p className="bg-red-300 p-3 text-white"> {message}</p>
       <div
         onClick={() => audio.play()}
         className="overflow-hidden relative rounded-2xl w-full mb-10"

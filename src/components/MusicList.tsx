@@ -39,11 +39,7 @@ const MusicList = ({
       </span>
       <div className="flex-1 flex gap-3 items-center">
         <div className="overflow-hidden w-12 h-12 min-w-[48px] rounded-lg  ">
-          <img
-            src={imageURL}
-            alt=""
-            className="object-cover w-full h-full animate-pulse"
-          />
+          <img src={imageURL} alt="" className="object-cover w-full h-full " />
         </div>
         <div>
           <p className="text-primary-500 font-semibold text-sm mb-2">

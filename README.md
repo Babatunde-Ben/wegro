@@ -8,7 +8,7 @@ To get a local copy up and running, follow these simple steps.
 
 ### Prerequisites
 
-Make sure you have Node.js and npm installed on your machine.
+Make sure you have Node.js and npm installed on your local machine.
 
 - Node.js: [Download](https://nodejs.org/)
 - npm: comes with Node.js installation
