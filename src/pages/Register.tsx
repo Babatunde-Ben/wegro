@@ -113,7 +113,7 @@ const Register = () => {
   };
   return (
     <div className="sm:max-w-[450px] sm:mx-auto md:mx-0">
-      <Logo className="mb-5" />
+      <Logo className="mb-10" />
       <p className="text-primary-500 font-bold text-xl mb-4">
         Join our music community today!
       </p>
@@ -208,7 +208,7 @@ const Register = () => {
         <div className="my-5">
           <p className="text-center text-slate-700 text-sm">
             Have an account already?{" "}
-            <Link to={"/login"} className="font-semibold">
+            <Link to={"/login"} className="font-semibold text-blue-500">
               Login
             </Link>
           </p>

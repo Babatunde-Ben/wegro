@@ -6,12 +6,44 @@ import TrendingIcon from "../assets/SVGs/hash-tag.svg?react";
 import RecommendedIcon from "../assets/SVGs/recommended.svg?react";
 import ArrowIcon from "../assets/SVGs/arrow-right.svg?react";
 import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import {
+  getTrackRecommendationBySeedArtist,
+  getTracksByID,
+} from "../utils/backendRequest";
+import { useState } from "react";
 
 const Home = () => {
   const navigate = useNavigate();
+
+  const { data: trackByID } = useQuery({
+    queryKey: ["tracks"],
+    queryFn: () => getTracksByID(),
+  });
+  const { data: trackByRecommendation } = useQuery({
+    queryKey: ["tracks-recommended"],
+    queryFn: () => getTrackRecommendationBySeedArtist(),
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+  });
+  // console.log("usequery trackByID", trackByID);
+  console.log(
+    "usequery trackByRecommendation",
+    trackByRecommendation?.data?.tracks?.slice(0, 3)
+  );
+
+  const [audio] = useState(
+    new Audio(
+      "https://p.scdn.co/mp3-preview/92479d43666b31ca72b7e2a4fad74568f98ee41e?cid=d8a5ed958d274c2e8ee717e6a4b0971d"
+    )
+  );
+
   return (
     <section className=" px-5 md:px-10">
-      <div className="overflow-hidden relative rounded-2xl w-full mb-10">
+      <div
+        onClick={() => audio.play()}
+        className="overflow-hidden relative rounded-2xl w-full mb-10"
+      >
         <img
           src={BannerImage}
           alt=""
@@ -39,9 +71,7 @@ const Home = () => {
             <span className="text-blue-500">
               <TrendingIcon className="w-6" />
             </span>
-            <span className="text-xl font-semibold text-primary-500">
-              Trending
-            </span>
+            <span className="text-xl font-bold text-primary-500">Trending</span>
           </p>
           <p
             onClick={() => navigate("/trending")}
@@ -66,7 +96,7 @@ const Home = () => {
             <span className="text-blue-500">
               <RecommendedIcon className="w-6" />
             </span>
-            <span className="text-xl font-semibold text-primary-500">
+            <span className="text-xl font-bold text-primary-500">
               Recommended
             </span>
           </p>
@@ -82,9 +112,18 @@ const Home = () => {
         </div>
 
         <div className="">
-          <MusicList isActive={false} />
-          <MusicList isActive={true} />
-          <MusicList isActive={false} />
+          {trackByRecommendation?.data?.tracks?.slice(0, 3)?.map((item) => (
+            <MusicList
+              isActive={false}
+              musicURL={item?.preview_url}
+              artist={item?.artists[0]?.name}
+              songTitle={item?.name}
+              key={item?.id}
+              imageURL={item?.album?.images[0]?.url}
+            />
+          ))}
+          {/* <MusicList isActive={true} />
+          <MusicList isActive={false} /> */}
         </div>
       </div>
     </section>

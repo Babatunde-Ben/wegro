@@ -109,7 +109,7 @@ const Login = () => {
   };
   return (
     <div className="sm:max-w-[450px] sm:mx-auto md:mx-0">
-      <Logo className="mb-5" />
+      <Logo className="mb-10" />
       <p className="text-primary-500 font-bold text-xl mb-4">Welcome Back,</p>
       <p className="font-medium text-primary-400 mb-10">
         Please log in to access your account and enjoy the music
@@ -178,7 +178,7 @@ const Login = () => {
         <div className="my-5">
           <p className="text-center text-slate-700 text-sm">
             Don't have an account?{" "}
-            <Link to={"/register"} className="font-semibold">
+            <Link to={"/register"} className="font-semibold text-blue-500">
               Create New Account
             </Link>
           </p>

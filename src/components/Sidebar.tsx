@@ -58,7 +58,7 @@ const Sidebar = () => {
   return (
     <div
       ref={sidebarRef}
-      className={`min-w-[250px] w-[250px] bg-white fixed z-50 top-0 left-0 h-screen overflow-y-auto flex flex-col items-center gap-20 py-10 transition duration-200 md:translate-x-0 ${
+      className={`min-w-[250px] w-[250px] bg-white fixed z-50 shadow-md top-0 left-0 h-screen overflow-y-auto flex flex-col items-center gap-20 py-10 transition duration-200 md:translate-x-0 ${
         !isSidebarOpen && "-translate-x-full"
       }`}
     >

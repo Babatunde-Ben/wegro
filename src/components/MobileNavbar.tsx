@@ -85,7 +85,7 @@ const MobileNavbar = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <nav className="bg-white w-full h-16 fixed right-0 bottom-0 md:left-[250px] md:hidden">
+    <nav className="bg-white shadow-md  w-full h-16 fixed right-0 bottom-0 z-20 md:left-[250px] md:hidden">
       {isProfileOpen && (
         <div
           ref={profileRef}
