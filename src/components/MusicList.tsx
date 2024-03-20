@@ -32,14 +32,18 @@ const MusicList = ({
     >
       <span className="cursor-pointer text-blue-500">
         {isPlaying ? (
-          <PauseIcon className="w-5" onClick={() => audio.pause()} />
+          <PauseIcon className="w-5" onClick={() => {}} />
         ) : (
-          <PlayIcon className="w-5" onClick={() => audio.play()} />
+          <PlayIcon className="w-5" onClick={() => {}} />
         )}
       </span>
       <div className="flex-1 flex gap-3 items-center">
         <div className="overflow-hidden w-12 h-12 min-w-[48px] rounded-lg  ">
-          <img src={imageURL} alt="" className="object-cover w-full h-full" />
+          <img
+            src={imageURL}
+            alt=""
+            className="object-cover w-full h-full animate-pulse"
+          />
         </div>
         <div>
           <p className="text-primary-500 font-semibold text-sm mb-2">

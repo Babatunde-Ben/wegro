@@ -33,15 +33,22 @@ cd wegro
 npm install
 ```
 
-### Installation
+### Usage
 
-To start the development server, run the following command:
+1. To start the development server, run the following command:
 
 ```bash
 npm run dev
 ```
 
 This will start the Vite development server and open your default browser with the project running.
+
+2. Create a `.env` file in the project directory and add these environment variables:
+
+```
+VITE_RAPID_API_KEY="72309b4c1cmsh9278e1d86fcced6p1d828djsn3b217c68c695"
+VITE_RAPID_API_HOST="spotify23.p.rapidapi.com"
+```
 
 ### Build
 
