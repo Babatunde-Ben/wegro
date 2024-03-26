@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import SearchIcon from "../assets/SVGs/search.svg?react";
@@ -6,19 +6,69 @@ import DummyProfile from "../assets/images/dummy-profile.png";
 import Logo from "../assets/SVGs/logo.svg?react";
 import MobileNavbar from "./MobileNavbar";
 import AudioPlayer from "./AudioPlayer";
+import MusicContext from "../contexts/MusicContext";
+import { useQuery } from "@tanstack/react-query";
+import { getTrackRecommendationBySeedArtist } from "../utils/backendRequest";
 
 const ProtectedRoutes = () => {
-  const userDataString = localStorage.getItem("user_data");
-
+  const {
+    trendingTracks,
+    recommendedTracks,
+    setRecommendedTracks,
+    setTrendingTracks,
+  } = useContext(MusicContext);
   const [searchInput, setSearchInput] = useState("");
   const profileRef = useRef<HTMLDivElement | null>(null);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [userData, setUserData] = useState<UserData | null>(null);
+  const userDataString = localStorage.getItem("user_data");
+
+  const { data: recommendedTracksData } = useQuery({
+    queryKey: ["recommended-tracks"],
+    queryFn: () => getTrackRecommendationBySeedArtist(),
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+  });
+
+  const transformedRecommendedTracks = recommendedTracksData?.data?.tracks?.map(
+    (item) => ({
+      previewURL: item?.preview_url,
+      artist: item?.artists[0]?.name,
+      trackTitle: item?.name,
+
+      imageURL: item?.album?.images[0]?.url,
+    })
+  );
+  const transformedTrendingTracks = recommendedTracksData?.data?.tracks?.map(
+    (item) => ({
+      previewURL: item?.preview_url,
+      artist: item?.artists[0]?.name,
+      trackTitle: item?.name,
+
+      imageURL: item?.album?.images[0]?.url,
+    })
+  );
+
+  //   "usequery trackByRecommendation",
+  //   trackByRecommendation?.data?.tracks?.slice(0, 3)
+  // );
+
+  useEffect(() => {
+    if (recommendedTracksData) {
+      setRecommendedTracks(transformedRecommendedTracks);
+      setTrendingTracks(transformedTrendingTracks);
+      console.log("trendingTracks", trendingTracks);
+    }
+  }, [trendingTracks, recommendedTracks]);
+
+  //   console.log("recommendedTracksData", recommendedTracksData?.data?.tracks);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setSearchInput(value);
   };
-  //   save user data into a state
+
+  //   save user data into a state variable
   useEffect(() => {
     if (userDataString !== null) {
       setUserData(JSON.parse(userDataString));

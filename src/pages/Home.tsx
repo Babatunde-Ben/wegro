@@ -6,47 +6,33 @@ import TrendingIcon from "../assets/SVGs/hash-tag.svg?react";
 import RecommendedIcon from "../assets/SVGs/recommended.svg?react";
 import ArrowIcon from "../assets/SVGs/arrow-right.svg?react";
 import { useNavigate } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import {
-  getTrackRecommendationBySeedArtist,
-  getTracksByID,
-} from "../utils/backendRequest";
+import { QueryClient, useQueryClient } from "@tanstack/react-query";
+import // getTrackRecommendationBySeedArtist,
+// getTracksByID,
+"../utils/backendRequest";
 import { useContext, useState } from "react";
 import MusicContext from "../contexts/MusicContext";
 
 const Home = () => {
   const navigate = useNavigate();
-  const { message } = useContext(MusicContext);
+  const { trendingTracks } = useContext(MusicContext);
 
-  const { data: trackByID } = useQuery({
-    queryKey: ["tracks"],
-    queryFn: () => getTracksByID(),
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: Infinity,
+      },
+    },
   });
-  const { data: trackByRecommendation } = useQuery({
-    queryKey: ["tracks-recommended"],
-    queryFn: () => getTrackRecommendationBySeedArtist(),
-    refetchOnWindowFocus: false,
-    refetchOnReconnect: false,
-  });
-  // console.log("usequery trackByID", trackByID);
-  console.log(
-    "usequery trackByRecommendation",
-    trackByRecommendation?.data?.tracks?.slice(0, 3)
-  );
+  // const { getQueryData } = useQueryClient();
+  // console.log("getQueryData", getQueryData);
 
-  const [audio] = useState(
-    new Audio(
-      "https://p.scdn.co/mp3-preview/92479d43666b31ca72b7e2a4fad74568f98ee41e?cid=d8a5ed958d274c2e8ee717e6a4b0971d"
-    )
-  );
+  const data = queryClient.getQueryData(["recommended-tracks"]);
 
+  console.log("tracks client", data);
   return (
     <section className=" px-5 md:px-10">
-      <p className="bg-red-300 p-3 text-white"> {message}</p>
-      <div
-        onClick={() => audio.play()}
-        className="overflow-hidden relative rounded-2xl w-full mb-10"
-      >
+      <div className="overflow-hidden relative rounded-2xl w-full mb-10">
         <img
           src={BannerImage}
           alt=""
@@ -115,7 +101,7 @@ const Home = () => {
         </div>
 
         <div className="">
-          {trackByRecommendation?.data?.tracks?.slice(0, 3)?.map((item) => (
+          {/* {trackByRecommendation?.data?.tracks?.slice(0, 3)?.map((item) => (
             <MusicList
               isActive={false}
               musicURL={item?.preview_url}
@@ -124,7 +110,8 @@ const Home = () => {
               key={item?.id}
               imageURL={item?.album?.images[0]?.url}
             />
-          ))}
+           ))}  */}
+
           {/* <MusicList isActive={true} />
           <MusicList isActive={false} /> */}
         </div>
