@@ -89,7 +89,7 @@ const MobileNavbar = () => {
       {isProfileOpen && (
         <div
           ref={profileRef}
-          className="absolute -top-36 right-5  bg-white min-w-40 py-4 px-4 shadow-sm rounded-lg"
+          className="absolute -top-36 right-5  bg-white min-w-40 py-4 px-4 shadow-sm rounded-lg z-50"
         >
           <div className="mb-5 text-center shadow-sm pb-3">
             <p className="font-semibold whitespace-nowrap mb-1 text-primary-500">
