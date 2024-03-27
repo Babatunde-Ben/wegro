@@ -18,3 +18,17 @@ type UserData = {
   display_name: string | null;
   profile_photo: string | null;
 };
+
+type RecommendedTracksData = {
+  data?: {
+    tracks?: {
+      preview_url?: string;
+      artists?: { name: string }[];
+      name?: string;
+      id?: string;
+      album?: {
+        images?: { url: string }[];
+      };
+    }[];
+  };
+};

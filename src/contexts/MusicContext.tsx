@@ -5,23 +5,24 @@ import React, {
   Dispatch,
 } from "react";
 interface ITrack {
-  trackTitle: string;
-  artist: string;
-  imageURL: string;
-  previewURL: string;
+  trackTitle: string | undefined;
+  artist: string | undefined;
+  imageURL: string | undefined;
+  previewURL: string | undefined;
 }
 interface IMusicContext {
-  recommendedTracks: ITrack[];
-  trendingTracks: ITrack[];
-  setRecommendedTracks: Dispatch<SetStateAction<ITrack[]>>;
-  setTrendingTracks: Dispatch<SetStateAction<ITrack[]>>;
+  selectedTrack: ITrack;
+  setSelectedTrack: Dispatch<SetStateAction<ITrack>>;
 }
 
 export const MusicContext = createContext<IMusicContext>({
-  recommendedTracks: [],
-  trendingTracks: [],
-  setRecommendedTracks: () => {},
-  setTrendingTracks: () => {},
+  selectedTrack: {
+    artist: "",
+    imageURL: "",
+    previewURL: "",
+    trackTitle: "",
+  },
+  setSelectedTrack: () => {},
 });
 
 export const MusicContextProvider = ({
@@ -29,15 +30,18 @@ export const MusicContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [recommendedTracks, setRecommendedTracks] = useState<ITrack[]>([]);
-  const [trendingTracks, setTrendingTracks] = useState<ITrack[]>([]);
+  const [selectedTrack, setSelectedTrack] = useState<ITrack>({
+    artist: "",
+    imageURL: "",
+    previewURL: "",
+    trackTitle: "",
+  });
+
   return (
     <MusicContext.Provider
       value={{
-        recommendedTracks,
-        trendingTracks,
-        setRecommendedTracks,
-        setTrendingTracks,
+        selectedTrack,
+        setSelectedTrack,
       }}
     >
       {children}

@@ -6,33 +6,38 @@ import TrendingIcon from "../assets/SVGs/hash-tag.svg?react";
 import RecommendedIcon from "../assets/SVGs/recommended.svg?react";
 import ArrowIcon from "../assets/SVGs/arrow-right.svg?react";
 import { useNavigate } from "react-router-dom";
-import { QueryClient, useQueryClient } from "@tanstack/react-query";
-import // getTrackRecommendationBySeedArtist,
-// getTracksByID,
-"../utils/backendRequest";
-import { useContext, useState } from "react";
-import MusicContext from "../contexts/MusicContext";
+import { useQueryClient } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+
+import { getTrackRecommendationBySeedArtist } from "../utils/backendRequest";
 
 const Home = () => {
   const navigate = useNavigate();
-  const { trendingTracks } = useContext(MusicContext);
 
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        staleTime: Infinity,
-      },
-    },
-  });
-  // const { getQueryData } = useQueryClient();
-  // console.log("getQueryData", getQueryData);
+  const queryClient = useQueryClient();
 
-  const data = queryClient.getQueryData(["recommended-tracks"]);
+  const [recommendedTracks, setRecommendedTracks] =
+    useState<RecommendedTracksData | null>(null);
 
-  console.log("tracks client", data);
+  useEffect(() => {
+    console.log("fetching effect");
+    const fetchData = async () => {
+      const data = await queryClient.ensureQueryData<RecommendedTracksData>({
+        queryKey: ["recommended-tracks"],
+        queryFn: () => getTrackRecommendationBySeedArtist(),
+      });
+
+      setRecommendedTracks(data);
+    };
+
+    fetchData();
+  }, [queryClient]);
+
+  console.log("recommendedTracks", recommendedTracks);
   return (
     <section className=" px-5 md:px-10">
       <div className="overflow-hidden relative rounded-2xl w-full mb-10">
+        {/* {test?.toString()} */}
         <img
           src={BannerImage}
           alt=""
@@ -101,16 +106,16 @@ const Home = () => {
         </div>
 
         <div className="">
-          {/* {trackByRecommendation?.data?.tracks?.slice(0, 3)?.map((item) => (
+          {recommendedTracks?.data?.tracks?.slice(0, 3)?.map((item) => (
             <MusicList
               isActive={false}
-              musicURL={item?.preview_url}
-              artist={item?.artists[0]?.name}
-              songTitle={item?.name}
+              previewURL={item?.preview_url}
+              artist={item?.artists?.[0]?.name}
+              trackTitle={item?.name}
               key={item?.id}
-              imageURL={item?.album?.images[0]?.url}
+              imageURL={item?.album?.images?.[0]?.url}
             />
-           ))}  */}
+          ))}
 
           {/* <MusicList isActive={true} />
           <MusicList isActive={false} /> */}

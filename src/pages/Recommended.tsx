@@ -1,7 +1,28 @@
 import MusicList from "../components/MusicList";
 import RecommendedIcon from "../assets/SVGs/recommended.svg?react";
+import { useQueryClient } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+import { getTrackRecommendationBySeedArtist } from "../utils/backendRequest";
 
 const Recommended = () => {
+  const queryClient = useQueryClient();
+
+  const [recommendedTracks, setRecommendedTracks] =
+    useState<RecommendedTracksData | null>(null);
+
+  useEffect(() => {
+    console.log("fetching effect");
+    const fetchData = async () => {
+      const data = await queryClient.ensureQueryData<RecommendedTracksData>({
+        queryKey: ["recommended-tracks"],
+        queryFn: () => getTrackRecommendationBySeedArtist(),
+      });
+
+      setRecommendedTracks(data);
+    };
+
+    fetchData();
+  }, [queryClient]);
   return (
     <section className=" px-5 min-h-screen md:px-10">
       <div className="flex justify-between items-center mb-5">
@@ -16,13 +37,16 @@ const Recommended = () => {
       </div>
 
       <div className="">
-        <MusicList isActive={false} />
-        <MusicList isActive={true} />
-        <MusicList isActive={false} />
-        <MusicList isActive={false} />
-        <MusicList isActive={false} />
-        <MusicList isActive={false} />
-        <MusicList isActive={false} />
+        {recommendedTracks?.data?.tracks?.map((item) => (
+          <MusicList
+            isActive={false}
+            previewURL={item?.preview_url}
+            artist={item?.artists?.[0]?.name}
+            trackTitle={item?.name}
+            key={item?.id}
+            imageURL={item?.album?.images?.[0]?.url}
+          />
+        ))}
       </div>
     </section>
   );
