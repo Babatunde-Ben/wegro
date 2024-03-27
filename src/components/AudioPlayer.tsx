@@ -9,9 +9,11 @@ import MusicContext from "../contexts/MusicContext";
 const AudioPlayer = () => {
   const { selectedTrack } = useContext(MusicContext);
 
-  // const [audio] = useState(new Audio(selectedTrack?.previewURL));
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  // const [duration, setDuration] = useState<number>(0);
+  // const [currentTime, setCurrentTime] = useState<number>(0);
+
   useEffect(() => {
     setIsPlaying(false);
   }, [selectedTrack]);
@@ -27,13 +29,25 @@ const AudioPlayer = () => {
     }
   };
 
-  const handleTimeUpdate = () => {
-    // Your logic for handling time updates (if needed)
-  };
+  // const handleLoadedMetadata = () => {
+  //   if (audioRef.current) {
+  //     setDuration(audioRef.current.duration);
+  //   }
+  // };
 
-  const handleLoadedMetadata = () => {
-    // Your logic for handling loaded metadata (if needed)
-  };
+  // const handleTimeUpdate = () => {
+  //   if (audioRef.current) {
+  //     setCurrentTime(audioRef.current.currentTime);
+  //   }
+  // };
+
+  // const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const time = parseFloat(e.target.value);
+  //   if (audioRef.current) {
+  //     audioRef.current.currentTime = time;
+  //   }
+  //   setCurrentTime(time);
+  // };
 
   return (
     <div className="px-5 h-full bg-white flex gap-4 items-center justify-evenly sm:px-8 lg:px-5 lg:flex-col lg:justify-start lg:py-10 lg:h-fit">
@@ -80,10 +94,26 @@ const AudioPlayer = () => {
         <audio
           ref={audioRef}
           src={selectedTrack?.previewURL}
-          onTimeUpdate={handleTimeUpdate}
-          onLoadedMetadata={handleLoadedMetadata}
+          // onTimeUpdate={handleTimeUpdate}
+          // onLoadedMetadata={handleLoadedMetadata}
+          onEnded={() => setIsPlaying(false)}
         />
       </div>
+      {/* <div>
+        Duration: {Math.floor(duration / 60)}:{Math.floor(duration % 60)}
+      </div>
+      <div>
+        Current Time: {Math.floor(currentTime / 60)}:
+        {Math.floor(currentTime % 60)}
+      </div>
+      <input
+        type="range"
+        min={0}
+        max={duration}
+        value={currentTime}
+        onChange={handleSeek}
+        // className="slider appearance-none w-full h-2 bg-gray-300 rounded-full outline-none mx-4"
+      /> */}
     </div>
   );
 };

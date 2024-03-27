@@ -22,6 +22,10 @@ const MusicList = ({
 }: MusicListProps) => {
   const [isLiked, setIsLiked] = useState(false);
   const { setSelectedTrack } = useContext(MusicContext);
+  const handleLike = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+    e.stopPropagation();
+    setIsLiked(!isLiked);
+  };
 
   return (
     <div
@@ -57,7 +61,7 @@ const MusicList = ({
       </div>
 
       <span
-        onClick={() => setIsLiked(!isLiked)}
+        onClick={handleLike}
         className={` cursor-pointer stroke-1 ${
           isLiked
             ? "text-red-500 stroke-red-500"

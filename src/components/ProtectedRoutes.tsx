@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import SearchIcon from "../assets/SVGs/search.svg?react";
@@ -9,15 +9,17 @@ import AudioPlayer from "./AudioPlayer";
 
 import { useQuery } from "@tanstack/react-query";
 import { getTrackRecommendationBySeedArtist } from "../utils/backendRequest";
+import MusicContext from "../contexts/MusicContext";
 
 const ProtectedRoutes = () => {
+  const { selectedTrack } = useContext(MusicContext);
   const [searchInput, setSearchInput] = useState("");
   const profileRef = useRef<HTMLDivElement | null>(null);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [userData, setUserData] = useState<UserData | null>(null);
   const userDataString = localStorage.getItem("user_data");
 
-  const { data: recommendedTracksData } = useQuery({
+  useQuery({
     queryKey: ["recommended-tracks"],
     queryFn: () => getTrackRecommendationBySeedArtist(),
     refetchOnWindowFocus: false,
@@ -151,7 +153,12 @@ const ProtectedRoutes = () => {
         <AudioPlayer />
       </section>
       <MobileNavbar />
-      <div className="hidden h-20 bg-red-300 shadow-sm border-b border-primary-50 w-full fixed z-20 left-0 bottom-16 md:bottom-0 md:pl-[250px] lg:hidden">
+      <div
+        className={`${
+          Object.values(selectedTrack).every((value) => Boolean(!value)) &&
+          "hidden"
+        } h-20 bg-red-300 shadow-sm border-b border-primary-50 w-full fixed z-20 left-0 bottom-16 md:bottom-0 md:pl-[250px] lg:hidden`}
+      >
         <AudioPlayer />
       </div>
     </main>
