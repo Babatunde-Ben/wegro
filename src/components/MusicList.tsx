@@ -12,6 +12,17 @@ type MusicListProps = {
   trackTitle?: string;
   artist?: string;
 };
+export const EmptyMusicList = () => {
+  return (
+    <div className="flex-1 flex gap-3 items-center p-4 py-5">
+      <div className=" w-12 h-12 min-w-[48px] bg-white animate-pulse rounded-lg  "></div>
+      <div>
+        <p className=" mb-2 h-4 w-48 bg-white animate-pulse"></p>
+        <p className="  h-4 w-32 bg-white animate-pulse"></p>
+      </div>
+    </div>
+  );
+};
 
 const MusicList = ({
   id,
@@ -50,7 +61,7 @@ const MusicList = ({
         )}
       </span> */}
       <div className="flex-1 flex gap-3 items-center">
-        <div className="overflow-hidden w-12 h-12 min-w-[48px] rounded-lg  ">
+        <div className="overflow-hidden w-12 h-12 min-w-[48px] rounded-lg bg-slate-200 ">
           <img src={imageURL} alt="" className="object-cover w-full h-full " />
         </div>
         <div>

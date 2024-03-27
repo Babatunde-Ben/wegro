@@ -1,12 +1,12 @@
-import MusicCard from "../components/MusicCard";
-import MusicList from "../components/MusicList";
+import MusicCard, { EmptyMusicCard } from "../components/MusicCard";
+import MusicList, { EmptyMusicList } from "../components/MusicList";
 import BannerImage from "../assets/images/banner-image.jpg";
 
 import TrendingIcon from "../assets/SVGs/hash-tag.svg?react";
 import RecommendedIcon from "../assets/SVGs/recommended.svg?react";
 import ArrowIcon from "../assets/SVGs/arrow-right.svg?react";
 import { useNavigate } from "react-router-dom";
-import { useQueryClient } from "@tanstack/react-query";
+import { useIsFetching, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
 import { getTrackRecommendationBySeedArtist } from "../utils/backendRequest";
@@ -15,7 +15,13 @@ const Home = () => {
   const navigate = useNavigate();
 
   const queryClient = useQueryClient();
-
+  const isFetchingRecommendedTracks = useIsFetching({
+    queryKey: ["recommended-tracks"],
+  });
+  const isFetchingTrendingTracks = useIsFetching({
+    queryKey: ["trending-tracks"],
+  });
+  console.log("isFetchingRecommendedTracks", isFetchingRecommendedTracks);
   const [recommendedTracks, setRecommendedTracks] = useState<TracksData | null>(
     null
   );
@@ -86,17 +92,27 @@ const Home = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-3 gap-2 sm:gap-4 ">
-          {trendingTracks?.data?.tracks?.slice(0, 3)?.map((item) => (
-            <MusicCard
-              key={item?.id}
-              id={item?.id}
-              previewURL={item?.preview_url}
-              artist={item?.artists?.[0]?.name}
-              trackTitle={item?.name}
-              imageURL={item?.album?.images?.[0]?.url}
-            />
-          ))}
+        <div className="grid grid-cols-3 gap-1 sm:gap-4 ">
+          {isFetchingTrendingTracks ? (
+            <>
+              <EmptyMusicCard />
+              <EmptyMusicCard />
+              <EmptyMusicCard />
+            </>
+          ) : (
+            trendingTracks?.data?.tracks
+              ?.slice(0, 3)
+              ?.map((item) => (
+                <MusicCard
+                  key={item?.id}
+                  id={item?.id}
+                  previewURL={item?.preview_url}
+                  artist={item?.artists?.[0]?.name}
+                  trackTitle={item?.name}
+                  imageURL={item?.album?.images?.[0]?.url}
+                />
+              ))
+          )}
         </div>
       </div>
       <div>
@@ -121,16 +137,26 @@ const Home = () => {
         </div>
 
         <div className="">
-          {recommendedTracks?.data?.tracks?.slice(0, 3)?.map((item) => (
-            <MusicList
-              key={item?.id}
-              previewURL={item?.preview_url}
-              artist={item?.artists?.[0]?.name}
-              trackTitle={item?.name}
-              id={item?.id}
-              imageURL={item?.album?.images?.[0]?.url}
-            />
-          ))}
+          {isFetchingRecommendedTracks ? (
+            <>
+              <EmptyMusicList />
+              <EmptyMusicList />
+              <EmptyMusicList />
+            </>
+          ) : (
+            recommendedTracks?.data?.tracks
+              ?.slice(0, 3)
+              ?.map((item) => (
+                <MusicList
+                  key={item?.id}
+                  previewURL={item?.preview_url}
+                  artist={item?.artists?.[0]?.name}
+                  trackTitle={item?.name}
+                  id={item?.id}
+                  imageURL={item?.album?.images?.[0]?.url}
+                />
+              ))
+          )}
 
           {/* <MusicList isActive={true} />
           <MusicList isActive={false} /> */}

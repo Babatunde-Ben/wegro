@@ -7,13 +7,14 @@ import { getTrackRecommendationBySeedArtist } from "../utils/backendRequest";
 const Recommended = () => {
   const queryClient = useQueryClient();
 
-  const [recommendedTracks, setRecommendedTracks] =
-    useState<RecommendedTracksData | null>(null);
+  const [recommendedTracks, setRecommendedTracks] = useState<TracksData | null>(
+    null
+  );
 
   useEffect(() => {
     console.log("fetching effect");
     const fetchData = async () => {
-      const data = await queryClient.ensureQueryData<RecommendedTracksData>({
+      const data = await queryClient.ensureQueryData<TracksData>({
         queryKey: ["recommended-tracks", "0upXUo04k4k8bGVSkmgrSc"],
         queryFn: () =>
           getTrackRecommendationBySeedArtist("0upXUo04k4k8bGVSkmgrSc"),
