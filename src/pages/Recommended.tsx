@@ -14,8 +14,9 @@ const Recommended = () => {
     console.log("fetching effect");
     const fetchData = async () => {
       const data = await queryClient.ensureQueryData<RecommendedTracksData>({
-        queryKey: ["recommended-tracks"],
-        queryFn: () => getTrackRecommendationBySeedArtist(),
+        queryKey: ["recommended-tracks", "0upXUo04k4k8bGVSkmgrSc"],
+        queryFn: () =>
+          getTrackRecommendationBySeedArtist("0upXUo04k4k8bGVSkmgrSc"),
       });
 
       setRecommendedTracks(data);
@@ -39,11 +40,11 @@ const Recommended = () => {
       <div className="">
         {recommendedTracks?.data?.tracks?.map((item) => (
           <MusicList
-            isActive={false}
+            key={item?.id}
             previewURL={item?.preview_url}
             artist={item?.artists?.[0]?.name}
             trackTitle={item?.name}
-            key={item?.id}
+            id={item?.id}
             imageURL={item?.album?.images?.[0]?.url}
           />
         ))}

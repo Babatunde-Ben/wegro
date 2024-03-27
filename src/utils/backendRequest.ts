@@ -23,13 +23,13 @@ echoThriveAPI.interceptors.request.use(
   }
 );
 
-export const getTracksByID = (id?: string) => {
-  return echoThriveAPI.get(
-    `https://${rapidAPIHost}/tracks/?ids=${"4WNcduiCmDNfmTEz7JvmLv"}`
-  );
-};
+// export const getTracksByID = (id?: string) => {
+//   return echoThriveAPI.get(
+//     `https://${rapidAPIHost}/tracks/?ids=${"4WNcduiCmDNfmTEz7JvmLv"}`
+//   );
+// };
 export const getTrackRecommendationBySeedArtist = (seedArtist?: string) => {
   return echoThriveAPI.get(
-    `https://${rapidAPIHost}/recommendations/?seed_artists=${"0upXUo04k4k8bGVSkmgrSc"}`
+    `https://${rapidAPIHost}/recommendations/?seed_artists=${seedArtist}`
   );
 };

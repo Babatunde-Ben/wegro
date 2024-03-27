@@ -6,7 +6,7 @@ import MusicContext from "../contexts/MusicContext";
 // import PauseIcon from "../assets/SVGs/pause.svg?react";
 
 type MusicListProps = {
-  isActive?: boolean;
+  id?: string;
   previewURL?: string;
   imageURL?: string;
   trackTitle?: string;
@@ -14,14 +14,14 @@ type MusicListProps = {
 };
 
 const MusicList = ({
-  isActive,
+  id,
   previewURL,
   imageURL,
   trackTitle,
   artist,
 }: MusicListProps) => {
   const [isLiked, setIsLiked] = useState(false);
-  const { setSelectedTrack } = useContext(MusicContext);
+  const { selectedTrack, setSelectedTrack } = useContext(MusicContext);
   const handleLike = (e: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
     e.stopPropagation();
     setIsLiked(!isLiked);
@@ -31,6 +31,7 @@ const MusicList = ({
     <div
       onClick={() =>
         setSelectedTrack({
+          id: id,
           artist: artist,
           imageURL: imageURL,
           trackTitle: trackTitle,
@@ -38,7 +39,7 @@ const MusicList = ({
         })
       }
       className={`flex items-center gap-8 px-3 py-3 rounded-md mb-2 cursor-pointer sm:px-5 ${
-        isActive ? "bg-white" : "hover:bg-white/30"
+        id === selectedTrack?.id ? "bg-white shadow-sm" : "hover:bg-white/30"
       }`}
     >
       {/* <span className="cursor-pointer text-blue-500">

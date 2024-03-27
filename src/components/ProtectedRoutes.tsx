@@ -20,8 +20,14 @@ const ProtectedRoutes = () => {
   const userDataString = localStorage.getItem("user_data");
 
   useQuery({
-    queryKey: ["recommended-tracks"],
-    queryFn: () => getTrackRecommendationBySeedArtist(),
+    queryKey: ["recommended-tracks", "0upXUo04k4k8bGVSkmgrSc"],
+    queryFn: () => getTrackRecommendationBySeedArtist("0upXUo04k4k8bGVSkmgrSc"),
+    refetchOnWindowFocus: false,
+    refetchOnReconnect: false,
+  });
+  useQuery({
+    queryKey: ["trending-tracks", "46pWGuE3dSwY3bMMXGBvVS"],
+    queryFn: () => getTrackRecommendationBySeedArtist("46pWGuE3dSwY3bMMXGBvVS"),
     refetchOnWindowFocus: false,
     refetchOnReconnect: false,
   });

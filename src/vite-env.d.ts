@@ -19,7 +19,7 @@ type UserData = {
   profile_photo: string | null;
 };
 
-type RecommendedTracksData = {
+type TracksData = {
   data?: {
     tracks?: {
       preview_url?: string;

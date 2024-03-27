@@ -5,6 +5,7 @@ import React, {
   Dispatch,
 } from "react";
 interface ITrack {
+  id: string | undefined;
   trackTitle: string | undefined;
   artist: string | undefined;
   imageURL: string | undefined;
@@ -17,6 +18,7 @@ interface IMusicContext {
 
 export const MusicContext = createContext<IMusicContext>({
   selectedTrack: {
+    id: "",
     artist: "",
     imageURL: "",
     previewURL: "",
@@ -31,6 +33,7 @@ export const MusicContextProvider = ({
   children: React.ReactNode;
 }) => {
   const [selectedTrack, setSelectedTrack] = useState<ITrack>({
+    id: "",
     artist: "",
     imageURL: "",
     previewURL: "",

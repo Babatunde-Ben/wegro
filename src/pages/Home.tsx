@@ -16,24 +16,32 @@ const Home = () => {
 
   const queryClient = useQueryClient();
 
-  const [recommendedTracks, setRecommendedTracks] =
-    useState<RecommendedTracksData | null>(null);
+  const [recommendedTracks, setRecommendedTracks] = useState<TracksData | null>(
+    null
+  );
+  const [trendingTracks, setTrendingTracks] = useState<TracksData | null>(null);
 
   useEffect(() => {
     console.log("fetching effect");
     const fetchData = async () => {
-      const data = await queryClient.ensureQueryData<RecommendedTracksData>({
-        queryKey: ["recommended-tracks"],
-        queryFn: () => getTrackRecommendationBySeedArtist(),
+      const recommendedData = await queryClient.ensureQueryData<TracksData>({
+        queryKey: ["recommended-tracks", "0upXUo04k4k8bGVSkmgrSc"],
+        queryFn: () =>
+          getTrackRecommendationBySeedArtist("0upXUo04k4k8bGVSkmgrSc"),
+      });
+      const trendingData = await queryClient.ensureQueryData<TracksData>({
+        queryKey: ["trending-tracks", "46pWGuE3dSwY3bMMXGBvVS"],
+        queryFn: () =>
+          getTrackRecommendationBySeedArtist("46pWGuE3dSwY3bMMXGBvVS"),
       });
 
-      setRecommendedTracks(data);
+      setRecommendedTracks(recommendedData);
+      setTrendingTracks(trendingData);
     };
 
     fetchData();
   }, [queryClient]);
 
-  console.log("recommendedTracks", recommendedTracks);
   return (
     <section className=" px-5 md:px-10">
       <div className="overflow-hidden relative rounded-2xl w-full mb-10">
@@ -79,9 +87,16 @@ const Home = () => {
         </div>
 
         <div className="grid grid-cols-3 gap-2 sm:gap-4 ">
-          <MusicCard />
-          <MusicCard />
-          <MusicCard />
+          {trendingTracks?.data?.tracks?.slice(0, 3)?.map((item) => (
+            <MusicCard
+              key={item?.id}
+              id={item?.id}
+              previewURL={item?.preview_url}
+              artist={item?.artists?.[0]?.name}
+              trackTitle={item?.name}
+              imageURL={item?.album?.images?.[0]?.url}
+            />
+          ))}
         </div>
       </div>
       <div>
@@ -108,11 +123,11 @@ const Home = () => {
         <div className="">
           {recommendedTracks?.data?.tracks?.slice(0, 3)?.map((item) => (
             <MusicList
-              isActive={false}
+              key={item?.id}
               previewURL={item?.preview_url}
               artist={item?.artists?.[0]?.name}
               trackTitle={item?.name}
-              key={item?.id}
+              id={item?.id}
               imageURL={item?.album?.images?.[0]?.url}
             />
           ))}
