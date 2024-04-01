@@ -1,7 +1,6 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import SearchIcon from "../assets/SVGs/search.svg?react";
 import DummyProfile from "../assets/images/dummy-profile.png";
 import Logo from "../assets/SVGs/logo.svg?react";
 import MobileNavbar from "./MobileNavbar";
@@ -83,12 +82,12 @@ const ProtectedRoutes = () => {
       <Sidebar />
 
       <section className="flex pb-36  md:ml-[250px] lg:mr-80 md:pb-20 lg:pb-0 ">
-        <div className="bg-[#f3f3f3] relative flex-1 py-5 md:py-8">
+        <div className="bg-[#f3f3f3] relative flex-1 py-5 md:py-10 lg:pt-5">
           <div className="px-5 py-6 md:hidden ">
             <Logo className="" />
           </div>
-          <div className="px-5 mb-8 flex items-center justify-between  gap-5 md:px-10">
-            <div className="bg-white h-14 rounded-full flex-1 shadow-lg shadow-primary-100 flex items-center justify-center gap-2 px-5 text-primary-500 md:px-8">
+          <div className="px-5 mb-8 flex items-center justify-end  gap-5 md:px-10">
+            {/* <div className="bg-white h-14 rounded-full flex-1 shadow-lg shadow-primary-100 flex items-center justify-center gap-2 px-5 text-primary-500 md:px-8">
               <span>
                 <SearchIcon />
               </span>
@@ -100,7 +99,7 @@ const ProtectedRoutes = () => {
                 className={` w-full h-full flex-1 text-sm p-3.5 py-3 rounded-md outline-none border-none font-medium  bg-transparent  placeholder:font-medium placeholder:text-sm placeholder:text-primary-200  `}
                 placeholder="Search.."
               />
-            </div>
+            </div> */}
             <div className="relative hidden md:block lg:hidden">
               {isProfileOpen && (
                 <div
@@ -136,7 +135,7 @@ const ProtectedRoutes = () => {
       </section>
 
       <section className="hidden w-80 h-screen fixed right-0 top-0 bg-white  lg:block">
-        <div className="shadow-md border-b border-primary-100 shadow-primary-100 flex gap-5 p-5 pt-8 ">
+        <div className="shadow-md border-b border-primary-100 shadow-primary-100 flex gap-5 p-5 pt-12 ">
           <div className="overflow-hidden shadow-md w-12 h-12 min-w-[48px] rounded-full  ">
             <img
               src={userData?.profile_photo || DummyProfile}

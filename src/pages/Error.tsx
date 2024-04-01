@@ -7,7 +7,7 @@ import Button from "../components/Button";
 const Error = () => {
   const navigate = useNavigate();
   return (
-    <main className=" min-h-screen text-center overflow-hidden px-5 pt-14 pb-14 sm:px-10 md:px-16 lg:px-28 ">
+    <main className=" min-h-screen text-center overflow-hidden px-5 pt-14 pb-14 sm:px-10 md:px-16 lg:px-20 ">
       <div className=" mx-auto ">
         <div>
           <Logo
@@ -16,13 +16,13 @@ const Error = () => {
           />
         </div>
 
-        <span className="inline-block mx-auto mt-7 mb-9 ">
-          <PageNotFoundIcon />
+        <span className="inline-block mx-auto mt-16 mb-5 md:mt-12">
+          <PageNotFoundIcon className="w-72 h-40" />
         </span>
         <p className="font-bold text-primary-500 mb-4 text-2xl md:text-4xl">
           Oops! Page Not Found
         </p>
-        <p className="text-lg text-primary-500 mb-12 md:text-xl">
+        <p className="text-lg text-primary-500 mb-10 md:text-xl">
           We couldn't find the page you're looking for. Let's get you back on
           track.
         </p>

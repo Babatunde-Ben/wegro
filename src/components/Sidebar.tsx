@@ -5,6 +5,7 @@ import Logo from "../assets/SVGs/logo.svg?react";
 import LogOutIcon from "../assets/SVGs/log-out.svg?react";
 import TrendingIcon from "../assets/SVGs/hash-tag.svg?react";
 import RecommendedIcon from "../assets/SVGs/recommended.svg?react";
+import SearchIcon from "../assets/SVGs/search.svg?react";
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 
@@ -53,12 +54,18 @@ const Sidebar = () => {
       name: "Recommended",
       svg: <RecommendedIcon className="w-5" />,
     },
+    {
+      id: 3,
+      path: "/search",
+      name: "Search",
+      svg: <SearchIcon className="w-5" />,
+    },
   ];
 
   return (
     <div
       ref={sidebarRef}
-      className={`min-w-[250px] w-[250px] bg-white fixed z-50 shadow-md top-0 left-0 h-screen overflow-y-auto flex flex-col items-center gap-20 py-10 transition duration-200 md:translate-x-0 ${
+      className={`min-w-[250px] w-[250px] bg-white fixed z-50 shadow-md top-0 left-0 h-screen overflow-y-auto flex flex-col items-center justify-between gap-10 py-10 transition duration-200 md:translate-x-0 ${
         !isSidebarOpen && "-translate-x-full"
       }`}
     >
@@ -66,7 +73,7 @@ const Sidebar = () => {
         <Logo className="w-40" />
       </span>
 
-      <ul className=" flex-1 w-full">
+      <ul className=" w-full">
         {navLinks.map((item) => (
           <li key={item.id} className="mb-2">
             <label
@@ -92,7 +99,7 @@ const Sidebar = () => {
 
       <button
         onClick={handleLogOut}
-        className={`w-full h-14 outline-none border-none inline-flex justify-center items-center gap-4 px-5 py-[14px] mb-3 cursor-pointer text-red-500 font-medium  capitalize whitespace-nowrap select-none  `}
+        className={` w-full h-14 outline-none border-none inline-flex justify-center items-center gap-4 px-5 py-[14px] mb-2 cursor-pointer text-red-500 font-medium  capitalize whitespace-nowrap select-none  `}
       >
         <span>
           <LogOutIcon />
