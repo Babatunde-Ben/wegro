@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import DummyProfile from "../assets/images/dummy-profile.png";
+import DummyProfile from "../assets/SVGs/dummy-profile.svg?react";
 import Logo from "../assets/SVGs/logo.svg?react";
 import MobileNavbar from "./MobileNavbar";
 import AudioPlayer from "./AudioPlayer";
@@ -112,13 +112,17 @@ const ProtectedRoutes = () => {
               )}
               <div
                 onClick={() => setIsProfileOpen(!isProfileOpen)}
-                className="shadow-md w-14 h-14 min-w-[56px]  rounded-full overflow-hidden cursor-pointer"
+                className="shadow-md w-14 h-14 min-w-[56px] border border-gray-200  rounded-full flex justify-center items-center overflow-hidden cursor-pointer"
               >
-                <img
-                  src={userData?.profile_photo || DummyProfile}
-                  alt=""
-                  className="object-cover w-full h-full "
-                />
+                {userData?.profile_photo ? (
+                  <img
+                    src={userData?.profile_photo}
+                    alt=""
+                    className="object-cover w-full h-full "
+                  />
+                ) : (
+                  <DummyProfile className="w-10" />
+                )}
               </div>
             </div>
           </div>
@@ -130,12 +134,16 @@ const ProtectedRoutes = () => {
 
       <section className="hidden w-80 h-screen fixed right-0 top-0 bg-white  lg:block">
         <div className="shadow-md border-b border-primary-100 shadow-primary-100 flex gap-5 p-5 pt-12 ">
-          <div className="overflow-hidden shadow-md w-12 h-12 min-w-[48px] rounded-full  ">
-            <img
-              src={userData?.profile_photo || DummyProfile}
-              alt=""
-              className="object-cover w-full h-full "
-            />
+          <div className="overflow-hidden border border-gray-100 shadow-md w-12 h-12 min-w-[48px] flex justify-center items-center rounded-full  ">
+            {userData?.profile_photo ? (
+              <img
+                src={userData?.profile_photo}
+                alt=""
+                className="object-cover w-full h-full "
+              />
+            ) : (
+              <DummyProfile className="w-10 " />
+            )}
           </div>
           <div>
             <p className="text-primary-500 font-bold">

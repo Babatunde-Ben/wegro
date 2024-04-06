@@ -16,6 +16,8 @@ const Search = () => {
     queryKey: ["search-tracks", searchParam],
     queryFn: () => searchTracks(searchParam),
     enabled: !!searchParam.length,
+    refetchOnReconnect: false,
+    refetchOnWindowFocus: false,
   });
 
   //   console.log("search result", searchResults?.data?.tracks?.items);

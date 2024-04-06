@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import HomeIcon from "../assets/SVGs/home.svg?react";
-import DummyProfile from "../assets/images/dummy-profile.png";
+import DummyProfile from "../assets/SVGs/dummy-profile.svg?react";
 import LogOutIcon from "../assets/SVGs/log-out.svg?react";
 import TrendingIcon from "../assets/SVGs/hash-tag.svg?react";
 import RecommendedIcon from "../assets/SVGs/recommended.svg?react";
@@ -136,13 +136,17 @@ const MobileNavbar = () => {
         <li>
           <div
             onClick={() => setIsProfileOpen(!isProfileOpen)}
-            className="shadow-md w-7 h-7 min-w-[28px]  rounded-full overflow-hidden cursor-pointer"
+            className="shadow-md w-7 h-7 min-w-[28px] flex justify-center items-center rounded-full overflow-hidden cursor-pointer"
           >
-            <img
-              src={userData?.profile_photo || DummyProfile}
-              alt=""
-              className="object-cover w-full h-full "
-            />
+            {userData?.profile_photo ? (
+              <img
+                src={userData?.profile_photo}
+                alt=""
+                className="object-cover w-full h-full "
+              />
+            ) : (
+              <DummyProfile />
+            )}
           </div>
         </li>
       </ul>
