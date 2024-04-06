@@ -16,6 +16,7 @@ import Recommended from "./pages/Recommended";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { MusicContextProvider } from "./contexts/MusicContext";
+import Search from "./pages/Search";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -36,6 +37,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               <Route path="/home" element={<Home />} />
               <Route path="/trending" element={<Trending />} />
               <Route path="/recommended" element={<Recommended />} />
+              <Route path="/search" element={<Search />} />
             </Route>
             <Route path="*" element={<Error />} />
           </Routes>

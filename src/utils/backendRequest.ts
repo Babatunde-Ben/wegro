@@ -28,8 +28,17 @@ echoThriveAPI.interceptors.request.use(
 //     `https://${rapidAPIHost}/tracks/?ids=${"4WNcduiCmDNfmTEz7JvmLv"}`
 //   );
 // };
+
 export const getTrackRecommendationBySeedArtist = (seedArtist?: string) => {
   return echoThriveAPI.get(
     `https://${rapidAPIHost}/recommendations/?seed_artists=${seedArtist}`
   );
+};
+export const searchTracks = (searchParam?: string) => {
+  return echoThriveAPI.get(
+    `https://${rapidAPIHost}/search/?q=${searchParam}&type=tracks`
+  );
+};
+export const getTrack = (id?: string) => {
+  return echoThriveAPI.get(`https://${rapidAPIHost}/tracks/?ids=${id}`);
 };

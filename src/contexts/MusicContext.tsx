@@ -9,7 +9,7 @@ interface ITrack {
   trackTitle: string | undefined;
   artist: string | undefined;
   imageURL: string | undefined;
-  previewURL: string | undefined;
+  previewURL?: string | undefined;
 }
 interface IMusicContext {
   selectedTrack: ITrack;

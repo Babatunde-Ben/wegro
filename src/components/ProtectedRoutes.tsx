@@ -12,7 +12,6 @@ import MusicContext from "../contexts/MusicContext";
 
 const ProtectedRoutes = () => {
   const { selectedTrack } = useContext(MusicContext);
-  const [searchInput, setSearchInput] = useState("");
   const profileRef = useRef<HTMLDivElement | null>(null);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [userData, setUserData] = useState<UserData | null>(null);
@@ -60,11 +59,6 @@ const ProtectedRoutes = () => {
 
   //   console.log("recommendedTracksData", recommendedTracksData?.data?.tracks);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setSearchInput(value);
-  };
-
   //   save user data into a state variable
   useEffect(() => {
     if (userDataString !== null) {
@@ -81,7 +75,7 @@ const ProtectedRoutes = () => {
     <main>
       <Sidebar />
 
-      <section className="flex pb-36  md:ml-[250px] lg:mr-80 md:pb-20 lg:pb-0 ">
+      <section className="flex pb-36 min-h-screen  md:ml-[250px] lg:mr-80 md:pb-20 lg:pb-0 ">
         <div className="bg-[#f3f3f3] relative flex-1 py-5 md:py-10 lg:pt-5">
           <div className="px-5 py-6 md:hidden ">
             <Logo className="" />

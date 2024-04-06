@@ -55,7 +55,7 @@ const Sidebar = () => {
       svg: <RecommendedIcon className="w-5" />,
     },
     {
-      id: 3,
+      id: 4,
       path: "/search",
       name: "Search",
       svg: <SearchIcon className="w-5" />,
