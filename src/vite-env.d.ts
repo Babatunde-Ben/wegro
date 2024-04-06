@@ -32,3 +32,16 @@ type TracksData = {
     }[];
   };
 };
+type TracksSearch = {
+  data?: {
+    id?: string;
+    name?: string;
+    artists?: { items: { profile: { name: string } }[] };
+    albumOfTrack?: {
+      coverArt?: { sources: { url: string }[] };
+    };
+    tracks?: {
+      preview_url?: string;
+    }[];
+  };
+};

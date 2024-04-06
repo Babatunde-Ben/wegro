@@ -105,7 +105,7 @@ const AudioPlayer = () => {
               <PlayBackIcon className="w-5" />
             </button>
             {isFetchingTrack ? (
-              <span className="text-gray-400">
+              <span className="text-gray-400 w-10 h-10 flex justify-center items-center">
                 <ButtonLoaderIcon />
               </span>
             ) : (

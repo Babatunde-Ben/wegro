@@ -51,7 +51,7 @@ const Search = () => {
               <EmptyMusicList />
             </>
           ) : (
-            searchResults?.data?.tracks?.items?.map((item) => (
+            searchResults?.data?.tracks?.items?.map((item: TracksSearch) => (
               //   <p>te</p>
               <MusicList
                 key={item?.data?.id}
