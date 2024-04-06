@@ -68,7 +68,7 @@ const MusicList = ({
           <img src={imageURL} alt="" className="object-cover w-full h-full " />
         </div>
         <div>
-          <p className="text-primary-500 font-semibold text-sm mb-2">
+          <p className="text-primary-500 font-semibold text-sm mb-2 first-letter:capitalize">
             {trackTitle}
           </p>
           <p className="text-primary-400 font-medium text-xs">{artist}</p>

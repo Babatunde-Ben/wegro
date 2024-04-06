@@ -4,6 +4,7 @@ import DummyProfile from "../assets/images/dummy-profile.png";
 import LogOutIcon from "../assets/SVGs/log-out.svg?react";
 import TrendingIcon from "../assets/SVGs/hash-tag.svg?react";
 import RecommendedIcon from "../assets/SVGs/recommended.svg?react";
+import SearchIcon from "../assets/SVGs/search.svg?react";
 import { useEffect, useRef, useState } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
@@ -23,19 +24,25 @@ const MobileNavbar = () => {
       id: 1,
       path: "/home",
       name: "Home",
-      svg: <HomeIcon className="w-7" />,
+      svg: <HomeIcon className="w-5" />,
     },
     {
       id: 2,
       path: "/trending",
       name: "Trending",
-      svg: <TrendingIcon className="w-7" />,
+      svg: <TrendingIcon className="w-5" />,
     },
     {
       id: 3,
       path: "/recommended",
       name: "Recommended",
-      svg: <RecommendedIcon className="w-7" />,
+      svg: <RecommendedIcon className="w-5" />,
+    },
+    {
+      id: 4,
+      path: "/search",
+      name: "Search",
+      svg: <SearchIcon className="w-5" />,
     },
   ];
 
@@ -85,7 +92,7 @@ const MobileNavbar = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <nav className="bg-white shadow-md  w-full h-16 fixed right-0 bottom-0 z-20 md:left-[250px] md:hidden">
+    <nav className="bg-white shadow-md  w-full h-16 fixed right-0 bottom-0 z-30 md:left-[250px] md:hidden">
       {isProfileOpen && (
         <div
           ref={profileRef}
@@ -129,7 +136,7 @@ const MobileNavbar = () => {
         <li>
           <div
             onClick={() => setIsProfileOpen(!isProfileOpen)}
-            className="shadow-md w-9 h-9 min-w-[36px]  rounded-full overflow-hidden cursor-pointer"
+            className="shadow-md w-7 h-7 min-w-[28px]  rounded-full overflow-hidden cursor-pointer"
           >
             <img
               src={userData?.profile_photo || DummyProfile}

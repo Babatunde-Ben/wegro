@@ -45,7 +45,7 @@ const MusicCard = ({
       <div className="overflow-hidden rounded-xl mb-3 shadow-md bg-slate-200 ">
         <img src={imageURL} alt="" className="object-cover w-full h-28" />
       </div>
-      <p className="text-primary-500 font-semibold text-sm sm:text-base ">
+      <p className="text-primary-500 font-semibold text-sm sm:text-base first-letter:capitalize ">
         {trackTitle}
       </p>
       <p className="text-primary-400 text-xs sm:text-sm">{artist}</p>
