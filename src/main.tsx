@@ -24,8 +24,8 @@ const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <MusicContextProvider>
-        <QueryClientProvider client={queryClient}>
+      <QueryClientProvider client={queryClient}>
+        <MusicContextProvider>
           <ReactQueryDevtools initialIsOpen={false} buttonPosition="top-left" />
           <Routes>
             <Route path="/" element={<Navigate to={"/home"} />} />
@@ -41,8 +41,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             </Route>
             <Route path="*" element={<Error />} />
           </Routes>
-        </QueryClientProvider>
-      </MusicContextProvider>
+        </MusicContextProvider>
+      </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
