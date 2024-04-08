@@ -5,10 +5,8 @@ import PauseIcon from "../assets/SVGs/pause.svg?react";
 import PlayBackIcon from "../assets/SVGs/play-back.svg?react";
 import PlayNextIcon from "../assets/SVGs/play-next.svg?react";
 import MusicIcon from "../assets/SVGs/music.svg?react";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect } from "react";
 import MusicContext from "../contexts/MusicContext";
-import { useQuery } from "@tanstack/react-query";
-import { getTrack } from "../utils/backendRequest";
 
 const AudioPlayer = () => {
   const {
@@ -83,7 +81,23 @@ const AudioPlayer = () => {
   // };
 
   return (
-    <div className="px-5 h-full bg-white flex gap-4 items-center justify-evenly sm:px-8 lg:px-5 lg:flex-col lg:justify-start lg:py-10 lg:h-fit">
+    <div className="relative px-5 h-full bg-white flex gap-4 items-center justify-evenly sm:px-8 lg:px-5 lg:flex-col lg:justify-start lg:py-10 lg:h-fit">
+      <span className="absolute bottom-[calc(100%-10px)]  w-full lg:hidden ">
+        <input
+          type="range"
+          min={0}
+          max={duration}
+          value={currentTime}
+          onChange={handleSeek}
+          style={{
+            background: `linear-gradient(to right, #3b82fc ${
+              (currentTime / duration) * 100
+            }%, #ddd ${(currentTime / duration) * 100}%)`,
+          }}
+          className="custom-slider-2 flex-1 outline-none border-none
+               p-0 rounded-full h-1 w-full "
+        />
+      </span>
       <p className="hidden lg:flex justify-center items-center gap-3 ">
         <span className="text-blue-500">
           <MusicIcon className="w-5" />
@@ -108,6 +122,32 @@ const AudioPlayer = () => {
             <p className="text-primary-400 font-medium text-sm md:text-base ">
               {selectedTrack?.artist}
             </p>
+          </div>
+          <div className=" items-center justify-center gap-3 w-full my-4 hidden lg:flex">
+            <span className="text-primary-500 font-medium text-sm">
+              {Math.floor(currentTime / 60)}:
+              {String(Math.floor(currentTime % 60)).padStart(2, "0")}
+            </span>
+
+            <input
+              type="range"
+              min={0}
+              max={duration}
+              value={currentTime}
+              onChange={handleSeek}
+              style={{
+                background: `linear-gradient(to right, #3b82fc ${
+                  (currentTime / duration) * 100
+                }%, #ddd ${(currentTime / duration) * 100}%)`,
+              }}
+              className="custom-slider flex-1 outline-none
+              appearance-none  rounded-full h-[6px] w-full "
+            />
+
+            <span className="text-primary-500 font-medium text-sm">
+              {Math.floor(duration / 60)}:
+              {String(Math.floor(duration % 60)).padStart(2, "0")}
+            </span>
           </div>
           <div className="flex items-center justify-center gap-10 ">
             <button className="cursor-pointer border-none outline-none text-primary-200 hidden lg:inline-block">
@@ -134,44 +174,27 @@ const AudioPlayer = () => {
               <PlayNextIcon className="w-5" />
             </button>
           </div>
-          <div className="bg-red-300/50">
-            {/* {!!selectedTrack?.previewURL && (
-              <audio
-                ref={audioRef}
-                src={selectedTrack?.previewURL}
-                onTimeUpdate={handleTimeUpdate}
-                onLoadedMetadata={handleLoadedMetadata}
-                onEnded={() => setIsPlaying(false)}
-              />
-            )}
-            {!selectedTrack?.previewURL &&
-              !!track?.data?.tracks[0]?.preview_url && (
-                <audio
-                  ref={audioRef}
-                  src={track?.data?.tracks[0]?.preview_url}
-                  onTimeUpdate={handleTimeUpdate}
-                  onLoadedMetadata={handleLoadedMetadata}
-                  onEnded={() => setIsPlaying(false)}
-                />
-              )} */}
-          </div>
         </>
       )}
-      <div>
-        Duration: {Math.floor(duration / 60)}:{Math.floor(duration % 60)}
-      </div>
-      <div>
-        Current Time: {Math.floor(currentTime / 60)}:
-        {Math.floor(currentTime % 60)}
-      </div>
-      <input
-        type="range"
-        min={0}
-        max={duration}
-        value={currentTime}
-        onChange={handleSeek}
-        // className="slider appearance-none w-full h-2 bg-gray-300 rounded-full outline-none mx-4"
-      />
+      {/* <div className="flex items-center justify-center gap-3 w-full">
+        <span className="text-primary-500 font-medium text-sm">
+          {Math.floor(currentTime / 60)}:
+          {String(Math.floor(currentTime % 60)).padStart(2, "0")}
+        </span>
+        <input
+          type="range"
+          min={0}
+          max={duration}
+          value={currentTime}
+          onChange={handleSeek}
+          className="slider appearance-none w-full flex-1 h-2 bg-gray-300 rounded-full outline-none"
+        />
+
+        <span className="text-primary-500 font-medium text-sm">
+          {Math.floor(duration / 60)}:
+          {String(Math.floor(duration % 60)).padStart(2, "0")}
+        </span>
+      </div> */}
     </div>
   );
 };
