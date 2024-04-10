@@ -24,25 +24,25 @@ const MobileNavbar = () => {
       id: 1,
       path: "/home",
       name: "Home",
-      svg: <HomeIcon className="w-5" />,
+      svg: <HomeIcon className="w-6" />,
     },
     {
       id: 2,
       path: "/trending",
       name: "Trending",
-      svg: <TrendingIcon className="w-5" />,
+      svg: <TrendingIcon className="w-6" />,
     },
     {
       id: 3,
       path: "/recommended",
       name: "Recommended",
-      svg: <RecommendedIcon className="w-5" />,
+      svg: <RecommendedIcon className="w-6" />,
     },
     {
       id: 4,
       path: "/search",
       name: "Search",
-      svg: <SearchIcon className="w-5" />,
+      svg: <SearchIcon className="w-6" />,
     },
   ];
 
@@ -136,7 +136,7 @@ const MobileNavbar = () => {
         <li>
           <div
             onClick={() => setIsProfileOpen(!isProfileOpen)}
-            className="shadow-md w-7 h-7 min-w-[28px] flex justify-center items-center rounded-full overflow-hidden cursor-pointer"
+            className="shadow-md w-8 h-8 min-w-[32px] flex justify-center items-center rounded-full overflow-hidden cursor-pointer"
           >
             {userData?.profile_photo ? (
               <img
