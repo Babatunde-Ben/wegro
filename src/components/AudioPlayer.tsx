@@ -7,6 +7,7 @@ import PlayNextIcon from "../assets/SVGs/play-next.svg?react";
 import MusicIcon from "../assets/SVGs/music.svg?react";
 import { useContext, useEffect } from "react";
 import MusicContext from "../contexts/MusicContext";
+import StringCarousel from "./StringCarousel";
 
 const AudioPlayer = () => {
   const {
@@ -105,7 +106,7 @@ const AudioPlayer = () => {
         <span className="text-primary-500 font-semibold">Now Playing</span>
       </p>
 
-      <div className="overflow-hidden shadow-md w-12 h-12 min-w-12 rounded-2xl lg:w-full lg:h-64 ">
+      <div className="overflow-hidden shadow-md w-12 h-12 min-w-12 rounded-2xl lg:w-full lg:h-52 ">
         <img
           src={selectedTrack?.imageURL || MusicDisc}
           alt=""
@@ -115,12 +116,14 @@ const AudioPlayer = () => {
       {(Object.values(selectedTrack).every((value) => Boolean(value)) ||
         !selectedTrack?.previewURL) && (
         <>
-          <div className="flex-1 lg:text-center">
+          <div className=" overflow-hidden w-full flex-1 lg:text-center ">
             <p className=" text-primary-500 mb-1 font-bold md:text-lg">
-              {selectedTrack?.trackTitle}
+              {/* {selectedTrack?.trackTitle} */}
+              <StringCarousel maxLength={24} text={selectedTrack?.trackTitle} />
             </p>
             <p className="text-primary-400 font-medium text-sm md:text-base ">
-              {selectedTrack?.artist}
+              {/* {selectedTrack?.artist} */}
+              <StringCarousel maxLength={24} text={selectedTrack?.artist} />
             </p>
           </div>
           <div className=" items-center justify-center gap-3 w-full my-4 hidden lg:flex">

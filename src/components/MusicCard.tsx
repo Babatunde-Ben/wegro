@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import MusicContext from "../contexts/MusicContext";
+import { truncateString } from "../utils/format";
 type MusicCardProps = {
   id?: string;
   previewURL?: string;
@@ -46,9 +47,11 @@ const MusicCard = ({
         <img src={imageURL} alt="" className="object-cover w-full h-28" />
       </div>
       <p className="text-primary-500 font-semibold text-sm sm:text-base first-letter:capitalize ">
-        {trackTitle}
+        {truncateString(trackTitle, 20)}
       </p>
-      <p className="text-primary-400 text-xs sm:text-sm">{artist}</p>
+      <p className="text-primary-400 text-xs sm:text-sm">
+        {truncateString(artist, 20)}
+      </p>
     </div>
   );
 };

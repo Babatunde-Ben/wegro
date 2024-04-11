@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 // import CardImage from "../assets/images/image-1.jpeg";
 import FavouriteIcon from "../assets/SVGs/favourite.svg?react";
 import MusicContext from "../contexts/MusicContext";
+import { truncateString } from "../utils/format";
 // import PlayIcon from "../assets/SVGs/play.svg?react";
 // import PauseIcon from "../assets/SVGs/pause.svg?react";
 
@@ -69,9 +70,11 @@ const MusicList = ({
         </div>
         <div>
           <p className="text-primary-500 font-semibold text-sm mb-2 first-letter:capitalize">
-            {trackTitle}
+            {truncateString(trackTitle, 40)}
           </p>
-          <p className="text-primary-400 font-medium text-xs">{artist}</p>
+          <p className="text-primary-400 font-medium text-xs">
+            {truncateString(artist, 40)}
+          </p>
         </div>
       </div>
 
