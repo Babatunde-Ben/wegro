@@ -1,5 +1,5 @@
 import MusicList from "../components/MusicList";
-import TrendingIcon from "../assets/SVGs/hash-tag.svg?react";
+import TrendingIcon from "../assets/SVGs/trending.svg?react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { getTrackRecommendationBySeedArtist } from "../utils/backendRequest";

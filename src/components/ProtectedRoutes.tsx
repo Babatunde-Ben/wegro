@@ -30,35 +30,6 @@ const ProtectedRoutes = () => {
     refetchOnReconnect: false,
   });
 
-  // const transformedRecommendedTracks = recommendedTracksData?.data?.tracks?.map(
-  //   (item) => ({
-  //     previewURL: item?.preview_url,
-  //     artist: item?.artists[0]?.name,
-  //     trackTitle: item?.name,
-
-  //     imageURL: item?.album?.images[0]?.url,
-  //   })
-  // );
-  // const transformedTrendingTracks = recommendedTracksData?.data?.tracks?.map(
-  //   (item) => ({
-  //     previewURL: item?.preview_url,
-  //     artist: item?.artists[0]?.name,
-  //     trackTitle: item?.name,
-
-  //     imageURL: item?.album?.images[0]?.url,
-  //   })
-  // );
-
-  // useEffect(() => {
-  //   if (recommendedTracksData) {
-  //     setRecommendedTracks(transformedRecommendedTracks);
-  //     setTrendingTracks(transformedTrendingTracks);
-  //     console.log("trendingTracks", trendingTracks);
-  //   }
-  // }, [trendingTracks, recommendedTracks]);
-
-  //   console.log("recommendedTracksData", recommendedTracksData?.data?.tracks);
-
   //   save user data into a state variable
   useEffect(() => {
     if (userDataString !== null) {
@@ -75,25 +46,18 @@ const ProtectedRoutes = () => {
     <main>
       <Sidebar />
 
-      <section className="flex pb-36 min-h-screen  md:ml-[250px] lg:mr-80 md:pb-20 lg:pb-0 ">
+      <section
+        className={`flex min-h-screen  md:ml-[250px] lg:mr-80 md:pb-20 lg:pb-0 ${
+          Object.values(selectedTrack).every((value) => Boolean(!value))
+            ? "pb-16"
+            : "pb-36"
+        }`}
+      >
         <div className="bg-[#f3f3f3] relative flex-1 py-5 md:py-10 lg:pt-5">
           <div className="px-5 py-6 md:hidden ">
             <Logo className="" />
           </div>
           <div className="px-5 mb-8 flex items-center justify-end  gap-5 md:px-10">
-            {/* <div className="bg-white h-14 rounded-full flex-1 shadow-lg shadow-primary-100 flex items-center justify-center gap-2 px-5 text-primary-500 md:px-8">
-              <span>
-                <SearchIcon />
-              </span>
-              <input
-                type="text"
-                name="search"
-                value={searchInput}
-                onChange={handleInputChange}
-                className={` w-full h-full flex-1 text-sm p-3.5 py-3 rounded-md outline-none border-none font-medium  bg-transparent  placeholder:font-medium placeholder:text-sm placeholder:text-primary-200  `}
-                placeholder="Search.."
-              />
-            </div> */}
             <div className="relative hidden md:block lg:hidden">
               {isProfileOpen && (
                 <div
@@ -164,7 +128,7 @@ const ProtectedRoutes = () => {
         className={`${
           Object.values(selectedTrack).every((value) => Boolean(!value)) &&
           "hidden"
-        } h-20 bg-red-300 shadow-sm border-b border-primary-50 w-full fixed z-20 left-0 bottom-16 md:bottom-0 md:pl-[250px] lg:hidden`}
+        } h-20 shadow-sm border-b border-primary-50 w-full fixed z-20 left-0 bottom-16 md:bottom-0 md:pl-[250px] lg:hidden`}
       >
         <AudioPlayer />
       </div>

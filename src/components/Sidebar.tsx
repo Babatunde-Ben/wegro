@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import HomeIcon from "../assets/SVGs/home.svg?react";
 import Logo from "../assets/SVGs/logo.svg?react";
 import LogOutIcon from "../assets/SVGs/log-out.svg?react";
-import TrendingIcon from "../assets/SVGs/hash-tag.svg?react";
+import TrendingIcon from "../assets/SVGs/trending.svg?react";
 import RecommendedIcon from "../assets/SVGs/recommended.svg?react";
 import SearchIcon from "../assets/SVGs/search.svg?react";
 import { signOut } from "firebase/auth";

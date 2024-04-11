@@ -131,6 +131,8 @@ const Search = () => {
                 <EmptyMusicList />
                 <EmptyMusicList />
                 <EmptyMusicList />
+                <EmptyMusicList />
+                <EmptyMusicList />
               </>
             ) : (
               recommendedTracks?.data?.tracks

@@ -2,7 +2,7 @@ import MusicCard, { EmptyMusicCard } from "../components/MusicCard";
 import MusicList, { EmptyMusicList } from "../components/MusicList";
 import BannerImage from "../assets/images/banner-image.jpg";
 
-import TrendingIcon from "../assets/SVGs/hash-tag.svg?react";
+import TrendingIcon from "../assets/SVGs/trending.svg?react";
 import RecommendedIcon from "../assets/SVGs/recommended.svg?react";
 import ArrowIcon from "../assets/SVGs/arrow-right.svg?react";
 import { useNavigate } from "react-router-dom";
