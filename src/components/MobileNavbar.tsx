@@ -5,11 +5,14 @@ import LogOutIcon from "../assets/SVGs/log-out.svg?react";
 import TrendingIcon from "../assets/SVGs/trending.svg?react";
 import RecommendedIcon from "../assets/SVGs/recommended.svg?react";
 import SearchIcon from "../assets/SVGs/search.svg?react";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import MusicContext from "../contexts/MusicContext";
 
 const MobileNavbar = () => {
+  const { togglePlay, setSelectedTrack, setDuration, setCurrentTime } =
+    useContext(MusicContext);
   const userDataString = localStorage.getItem("user_data");
 
   const navigate = useNavigate();
@@ -47,6 +50,16 @@ const MobileNavbar = () => {
   ];
 
   const handleLogOut = () => {
+    togglePlay();
+    setSelectedTrack(() => ({
+      id: "",
+      artist: "",
+      imageURL: "",
+      previewURL: "",
+      trackTitle: "",
+    }));
+    setDuration(0);
+    setCurrentTime(0);
     signOut(auth)
       .then(() => {
         // remove user data from local storage
@@ -100,7 +113,7 @@ const MobileNavbar = () => {
         >
           <div className="mb-5 text-center shadow-sm pb-3">
             <p className="font-semibold whitespace-nowrap mb-1 text-primary-500">
-              {userData?.display_name || "John Doe"}
+              {userData?.display_name || "Welcome"}
             </p>
             <p className="font-medium text-primary-400 text-sm">Premium User</p>
           </div>

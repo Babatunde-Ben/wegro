@@ -66,7 +66,7 @@ const ProtectedRoutes = () => {
                 >
                   <div className=" text-center">
                     <p className="font-semibold whitespace-nowrap mb-1 text-primary-500">
-                      {userData?.display_name || "John Doe"}
+                      {userData?.display_name || "Welcome"}
                     </p>
                     <p className="font-medium text-primary-400 text-sm">
                       Premium User
@@ -111,7 +111,7 @@ const ProtectedRoutes = () => {
           </div>
           <div>
             <p className="text-primary-500 font-bold">
-              {userData?.display_name || "John Doe"}
+              {userData?.display_name || "Welcome"}
             </p>
             <p
               className="text-primary-400 font-medium text-sm

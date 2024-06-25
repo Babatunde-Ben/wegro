@@ -22,7 +22,6 @@ const Register = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setInputFields(() => ({ ...inputFields, [name]: value }));
-    console.log(inputFields);
   };
 
   // function to login user via google authentication
@@ -42,9 +41,6 @@ const Register = () => {
           password: "",
         });
 
-        // console.log("google auth response", res);
-        // console.log("google token", res?.user?.accessToken);
-
         // save user data to browser local storage
         const userData = {
           //   access_token: res?.user?.accessToken,
@@ -55,10 +51,9 @@ const Register = () => {
         // redirect to home page
         navigate("/home");
       })
-      .catch((error) => {
+      .catch(() => {
         setIsAuthenticatingGoogle(false);
 
-        console.log("google auth error", error);
         setErrorMessage("Error authenticatng user");
       });
   };
@@ -85,7 +80,6 @@ const Register = () => {
 
         // Signed up
         const user = userCredential?.user;
-        // console.log("login user ", user);
 
         // save user data to browser local storage
         const userData = {

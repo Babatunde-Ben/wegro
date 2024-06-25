@@ -12,7 +12,6 @@ const Recommended = () => {
   );
 
   useEffect(() => {
-    console.log("fetching effect");
     const fetchData = async () => {
       const data = await queryClient.ensureQueryData<TracksData>({
         queryKey: ["recommended-tracks", "0upXUo04k4k8bGVSkmgrSc"],

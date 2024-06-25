@@ -10,7 +10,6 @@ const Trending = () => {
   const [trendingTracks, setTrendingTracks] = useState<TracksData | null>(null);
 
   useEffect(() => {
-    console.log("fetching effect");
     const fetchData = async () => {
       const data = await queryClient.ensureQueryData<TracksData>({
         queryKey: ["trending-tracks", "46pWGuE3dSwY3bMMXGBvVS"],

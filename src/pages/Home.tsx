@@ -21,14 +21,13 @@ const Home = () => {
   const isFetchingTrendingTracks = useIsFetching({
     queryKey: ["trending-tracks"],
   });
-  console.log("isFetchingRecommendedTracks", isFetchingRecommendedTracks);
+
   const [recommendedTracks, setRecommendedTracks] = useState<TracksData | null>(
     null
   );
   const [trendingTracks, setTrendingTracks] = useState<TracksData | null>(null);
 
   useEffect(() => {
-    console.log("fetching effect");
     const fetchData = async () => {
       const recommendedData = await queryClient.ensureQueryData<TracksData>({
         queryKey: ["recommended-tracks", "0upXUo04k4k8bGVSkmgrSc"],

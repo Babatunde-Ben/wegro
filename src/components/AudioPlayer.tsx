@@ -21,65 +21,9 @@ const AudioPlayer = () => {
     handleSeek,
   } = useContext(MusicContext);
 
-  // const audioRef = useRef<HTMLAudioElement>(null);
-  // const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  // const [duration, setDuration] = useState<number>(0);
-  // const [currentTime, setCurrentTime] = useState<number>(0);
-
-  // const {
-  //   data: track,
-  //   isLoading: isFetchingTrack,
-  //   refetch: fetchTrack,
-  // } = useQuery({
-  //   queryKey: ["get-track", selectedTrack?.id],
-  //   queryFn: () => getTrack(selectedTrack?.id),
-  //   enabled: false,
-  //   retry: false,
-  // });
-  // console.log("new search track ", track?.data?.tracks[0]?.preview_url);
-
-  // useEffect(() => {
-  //   if (!selectedTrack?.previewURL && selectedTrack) fetchTrack();
-  // }, [selectedTrack,fetchTrack]);
-
   useEffect(() => {
     setIsPlaying(false);
   }, [selectedTrack]);
-
-  // const togglePlay = () => {
-  //   if (selectedTrack?.previewURL || track?.data?.tracks[0]?.preview_url) {
-  //     if (audioRef.current) {
-  //       if (isPlaying) {
-  //         audioRef.current.pause();
-  //       } else {
-  //         audioRef.current.play();
-  //       }
-  //       setIsPlaying(!isPlaying);
-  //     }
-  //   } else {
-  //     fetchTrack();
-  //   }
-  // };
-
-  // const handleLoadedMetadata = () => {
-  //   if (audioRef.current) {
-  //     setDuration(audioRef.current.duration);
-  //   }
-  // };
-
-  // const handleTimeUpdate = () => {
-  //   if (audioRef.current) {
-  //     setCurrentTime(audioRef.current.currentTime);
-  //   }
-  // };
-
-  // const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   const time = parseFloat(e.target.value);
-  //   if (audioRef.current) {
-  //     audioRef.current.currentTime = time;
-  //   }
-  //   setCurrentTime(time);
-  // };
 
   return (
     <div className="relative px-5 h-full bg-white flex gap-4 items-center justify-evenly sm:px-8 lg:px-5 lg:flex-col lg:justify-start lg:py-10 lg:h-fit">

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import HomeIcon from "../assets/SVGs/home.svg?react";
 import Logo from "../assets/SVGs/logo.svg?react";
@@ -8,8 +8,11 @@ import RecommendedIcon from "../assets/SVGs/recommended.svg?react";
 import SearchIcon from "../assets/SVGs/search.svg?react";
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import MusicContext from "../contexts/MusicContext";
 
 const Sidebar = () => {
+  const { togglePlay, setSelectedTrack, setDuration, setCurrentTime } =
+    useContext(MusicContext);
   const navigate = useNavigate();
   const location = useLocation();
   const pathname = location.pathname;
@@ -23,6 +26,16 @@ const Sidebar = () => {
     setIsSidebarOpen(false);
   };
   const handleLogOut = () => {
+    togglePlay();
+    setSelectedTrack(() => ({
+      id: "",
+      artist: "",
+      imageURL: "",
+      previewURL: "",
+      trackTitle: "",
+    }));
+    setDuration(0);
+    setCurrentTime(0);
     signOut(auth)
       .then(() => {
         // remove user data from local storage

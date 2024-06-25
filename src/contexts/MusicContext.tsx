@@ -75,7 +75,6 @@ export const MusicContextProvider = ({
     enabled: false,
     retry: false,
   });
-  console.log("new search track ", track?.data?.tracks[0]?.preview_url);
 
   const togglePlay = () => {
     if (selectedTrack?.previewURL || track?.data?.tracks[0]?.preview_url) {
@@ -87,9 +86,9 @@ export const MusicContextProvider = ({
         }
         setIsPlaying(!isPlaying);
       }
-    } else {
+    } else if (selectedTrack?.id) {
       fetchTrack();
-    }
+    } else return;
   };
   const handleLoadedMetadata = () => {
     if (audioRef.current) {

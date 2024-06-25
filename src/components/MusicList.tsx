@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 // import CardImage from "../assets/images/image-1.jpeg";
 import FavouriteIcon from "../assets/SVGs/favourite.svg?react";
 import MusicContext from "../contexts/MusicContext";
@@ -39,9 +39,6 @@ const MusicList = ({
     setIsLiked(!isLiked);
   };
 
-  useEffect(() => {
-    console.log("concept track", selectedTrack);
-  }, [selectedTrack]);
   return (
     <div
       onClick={() =>

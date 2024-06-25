@@ -45,7 +45,6 @@ const Search = () => {
     }
   }, [searchParam, refetch]);
   useEffect(() => {
-    console.log("fetching effect");
     const fetchData = async () => {
       const recommendedData = await queryClient.ensureQueryData<TracksData>({
         queryKey: ["recommended-tracks", "0upXUo04k4k8bGVSkmgrSc"],
